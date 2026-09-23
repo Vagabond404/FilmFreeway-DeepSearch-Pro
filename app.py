@@ -94,68 +94,68 @@ else:
 CURATED_MODELS = [
     {
         "name": "qwen2.5:0.5b",
-        "display_name": "Qwen 2.5 (0.5B) — Ultra Léger",
+        "display_name": "Qwen 2.5 (0.5B) — Ultra Lightweight",
         "family": "Qwen",
         "parameters": "490M",
-        "disk_size": "398 Mo",
-        "ram_usage": "~600 Mo",
-        "speed_core_i3": "35 tok/s (Instantané)",
+        "disk_size": "398 MB",
+        "ram_usage": "~600 MB",
+        "speed_core_i3": "35 tok/s (Instant)",
         "accuracy_rate": "91%",
-        "tier_badge": "Recommandé Core i3",
+        "tier_badge": "Recommended (Fast & Light)",
         "tier_color": "emerald",
-        "description": "Modèle ultra-compact idéal pour votre Core i3 et 8 Go de RAM. Zéro ralentissement, extraction JSON immédiate.",
+        "description": "Ultra-compact model tailored for smooth performance on standard CPUs. Instant JSON extraction with minimal RAM usage.",
     },
     {
         "name": "qwen2.5:1.5b",
-        "display_name": "Qwen 2.5 (1.5B) — Équilibre Idéal",
+        "display_name": "Qwen 2.5 (1.5B) — Optimal Balance",
         "family": "Qwen",
         "parameters": "1.5B",
-        "disk_size": "986 Mo",
-        "ram_usage": "~1.8 Go",
-        "speed_core_i3": "18 tok/s (Fluide)",
+        "disk_size": "986 MB",
+        "ram_usage": "~1.8 GB",
+        "speed_core_i3": "18 tok/s (Smooth)",
         "accuracy_rate": "95%",
-        "tier_badge": "Équilibré & Précis",
+        "tier_badge": "Balanced & Accurate",
         "tier_color": "indigo",
-        "description": "Compréhension approfondie des règlements complexes. Recommandé si vous n'avez pas trop d'onglets de navigateur ouverts.",
+        "description": "In-depth understanding of complex festival rules. Recommended for detailed criteria parsing.",
     },
     {
         "name": "llama3.2:1b",
         "display_name": "Llama 3.2 (1B) — Meta AI Compact",
         "family": "Llama",
         "parameters": "1.2B",
-        "disk_size": "1.3 Go",
-        "ram_usage": "~1.5 Go",
-        "speed_core_i3": "20 tok/s (Rapide)",
+        "disk_size": "1.3 GB",
+        "ram_usage": "~1.5 GB",
+        "speed_core_i3": "20 tok/s (Fast)",
         "accuracy_rate": "93%",
-        "tier_badge": "Léger & Robuste",
+        "tier_badge": "Lightweight & Robust",
         "tier_color": "blue",
-        "description": "Le petit modèle officiel de Meta. Très robuste sur les nuances de festivals anglophones.",
+        "description": "Official compact model from Meta. Excellent comprehension of nuanced festival language and guidelines.",
     },
     {
         "name": "deepseek-r1:1.5b",
-        "display_name": "DeepSeek R1 (1.5B) — Raisonnement",
+        "display_name": "DeepSeek R1 (1.5B) — Reasoning",
         "family": "DeepSeek",
         "parameters": "1.5B",
-        "disk_size": "1.1 Go",
-        "ram_usage": "~2.0 Go",
-        "speed_core_i3": "14 tok/s (Réfléchi)",
+        "disk_size": "1.1 GB",
+        "ram_usage": "~2.0 GB",
+        "speed_core_i3": "14 tok/s (Deliberate)",
         "accuracy_rate": "96%",
-        "tier_badge": "Raisonnement Avancé",
+        "tier_badge": "Step-by-Step Reasoning",
         "tier_color": "purple",
-        "description": "Modèle avec chaîne de pensée pas à pas (chain-of-thought) pour démêler les conditions d'admissibilité les plus pièges.",
+        "description": "Chain-of-thought model capable of untangling complex eligibility edge cases step-by-step.",
     },
     {
         "name": "mistral:7b",
-        "display_name": "Mistral (7B) — Expert Puissant",
+        "display_name": "Mistral (7B) — Expert Heavy",
         "family": "Mistral",
         "parameters": "7B",
-        "disk_size": "4.4 Go",
-        "ram_usage": "~5.5 Go",
-        "speed_core_i3": "3 tok/s (Lourd sur CPU)",
+        "disk_size": "4.4 GB",
+        "ram_usage": "~5.5 GB",
+        "speed_core_i3": "3 tok/s (Heavy CPU load)",
         "accuracy_rate": "98%",
-        "tier_badge": "⚠️ Attention RAM",
+        "tier_badge": "⚠️ High RAM Usage",
         "tier_color": "rose",
-        "description": "Très haute précision mais volumineux. Déconseillé sur vos 8 Go de RAM totale sauf si aucun autre programme ne tourne.",
+        "description": "Highest accuracy but resource-heavy. Requires substantial free memory to run smoothly on CPU.",
     },
 ]
 
@@ -195,7 +195,7 @@ class ModelPullManager:
         with self.lock:
             self.is_pulling = True
             self.model_name = model_name
-            self.status = f"Connexion et démarrage du téléchargement de {model_name}..."
+            self.status = f"Connecting and initiating download of {model_name}..."
             self.percent = 0
             self.completed_bytes = 0
             self.total_bytes = 0
@@ -219,7 +219,7 @@ class ModelPullManager:
         with self.lock:
             self.is_pulling = False
             self.error = err_msg
-            self.status = f"Erreur: {err_msg}"
+            self.status = f"Error: {err_msg}"
 
     def get_status(self) -> Dict[str, Any]:
         with self.lock:
@@ -238,10 +238,10 @@ model_pull_mgr = ModelPullManager()
 def _run_model_pull_worker(model_name: str):
     model_pull_mgr.start(model_name)
     try:
-        url = "http://localhost:11434/api/pull"
+        url = "http://127.0.0.1:11434/api/pull"
         resp = requests.post(url, json={"name": model_name}, stream=True, timeout=900)
         if resp.status_code != 200:
-            model_pull_mgr.fail(f"Ollama a retourné une erreur HTTP {resp.status_code}")
+            model_pull_mgr.fail(f"Ollama returned HTTP error {resp.status_code}")
             return
 
         for line in resp.iter_lines():
@@ -253,12 +253,12 @@ def _run_model_pull_worker(model_name: str):
                 completed = data.get("completed", 0)
                 total = data.get("total", 0)
                 if status == "success":
-                    model_pull_mgr.finish(f"✓ Modèle {model_name} téléchargé et prêt !")
+                    model_pull_mgr.finish(f"✓ Model {model_name} downloaded and ready!")
                     return
                 model_pull_mgr.update(status, completed, total)
             except Exception:
                 pass
-        model_pull_mgr.finish(f"✓ Modèle {model_name} installé avec succès !")
+        model_pull_mgr.finish(f"✓ Model {model_name} installed successfully!")
     except Exception as e:
         model_pull_mgr.fail(str(e))
 
@@ -270,7 +270,7 @@ class TaskManager:
         self.is_running = False
         self.task_type = "idle"  # 'crawl' or 'llm_review'
         self.progress = 0
-        self.message = "Prêt"
+        self.message = "Ready"
         self.logs: List[str] = []
         self.error: Optional[str] = None
 
@@ -327,47 +327,47 @@ task_mgr = TaskManager()
 # Request Models (5 Comprehensive Categories)
 class ProfileModel(BaseModel):
     # 1. Profil du Réalisateur & de l'Équipe
-    director_age_group: str = "adult"  # youth (<18), young_adult (18-25), adult
+    director_age_group: str = "emerging"  # youth (<18), emerging, adult
     is_student: bool = False
-    school_name: Optional[str] = None
+    school_name: Optional[str] = ""
     shot_during_studies: bool = False
     is_first_time: bool = False
-    director_nationality: str = "France"
-    director_residence: str = "France"
+    director_nationality: str = ""
+    director_residence: str = ""
     demographics: List[str] = []  # female_filmmaker, lgbtq, indigenous, regional_minority
     credited_roles: str = "director_only"
 
-    # 2. Fiche Technique & Artistique
-    film_title: str = "Mon Court Métrage"
+    # 2. Technical & Artistic Specs
+    film_title: str = ""
     runtime_minutes: int = 15
-    project_type: str = "fiction"  # fiction, documentary, animation, experimental, music_video, web_series, vr_360, art_installation
+    project_type: str = "fiction"  # fiction, documentary, animation, experimental, music_video, web_series, vr_360
     genres: List[str] = ["Short", "Drama"]
     categories: Optional[List[str]] = None
-    completion_date: str = "2025-06-01"
-    production_budget: Optional[float] = 5000.0
-    budget_currency: str = "EUR"
+    completion_date: str = ""
+    production_budget: Optional[float] = 0.0
+    budget_currency: str = "USD"
     budget_tier: str = "micro"
-    country_of_origin: str = "France"
+    country_of_origin: str = ""
     country: Optional[str] = None
-    country_of_filming: str = "France"
-    spoken_language: str = "Français"
+    country_of_filming: str = ""
+    spoken_language: str = "English"
     subtitles: List[str] = ["English"]
     color_type: str = "color"
     aspect_ratio: str = "16:9"
     capture_format: str = "digital"
 
-    # 3. Politiques IA
+    # 3. AI Creative Policies
     ai_integration_level: str = "none"  # none (0%), hybrid, full (100%)
     ai_target_category: str = "all"
     has_ai_disclosure: bool = False
 
-    # 4. Statut de diffusion & Premières
+    # 4. Premiere Status & Prior Release
     premiere_status_available: str = "world"  # world, international, national, regional, none
     online_availability: str = "private"  # private, public
     past_screenings_awards: Optional[str] = None
     commercial_distribution: str = "none"
 
-    # 5. Cible & Filtres Festivals
+    # 5. Targets & Festival Constraints
     max_fee_usd: Optional[float] = 25.0
     deadline_not_before: Optional[str] = None
     min_years_running: int = 0
@@ -435,28 +435,28 @@ class AISummaryRequest(BaseModel):
 
 def get_current_profile() -> Dict[str, Any]:
     default_prof = {
-        "director_age_group": "adult",
+        "director_age_group": "emerging",
         "is_student": False,
         "school_name": "",
         "shot_during_studies": False,
         "is_first_time": False,
-        "director_nationality": "France",
-        "director_residence": "France",
+        "director_nationality": "",
+        "director_residence": "",
         "demographics": [],
         "credited_roles": "director_only",
-        "film_title": "Mon Court Métrage",
+        "film_title": "",
         "runtime_minutes": 15,
         "project_type": "fiction",
         "genres": ["Short", "Drama"],
         "categories": ["Short", "Drama"],
-        "completion_date": "2025-06-01",
-        "production_budget": 5000.0,
-        "budget_currency": "EUR",
+        "completion_date": "",
+        "production_budget": 0.0,
+        "budget_currency": "USD",
         "budget_tier": "micro",
-        "country_of_origin": "France",
-        "country": "France",
-        "country_of_filming": "France",
-        "spoken_language": "Français",
+        "country_of_origin": "",
+        "country": None,
+        "country_of_filming": "",
+        "spoken_language": "English",
         "subtitles": ["English"],
         "color_type": "color",
         "aspect_ratio": "16:9",
@@ -468,8 +468,8 @@ def get_current_profile() -> Dict[str, Any]:
         "online_availability": "private",
         "past_screenings_awards": "",
         "commercial_distribution": "none",
-        "max_fee_usd": 25.0,
-        "deadline_not_before": datetime.date.today().isoformat(),
+        "max_fee_usd": 30.0,
+        "deadline_not_before": "",
         "min_years_running": 0,
         "min_reviews": 0,
         "target_accreditations": [],
@@ -495,16 +495,18 @@ def get_current_profile() -> Dict[str, Any]:
 import socket
 
 def check_ollama_alive() -> Dict[str, Any]:
-    try:
-        # Fast socket probe in 0.15s to avoid DNS/HTTP timeout when offline
-        with socket.create_connection(("127.0.0.1", 11434), timeout=0.15):
-            pass
-        req = urllib.request.Request("http://127.0.0.1:11434/api/version", headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=0.5) as resp:
-            data = json.loads(resp.read().decode())
-            return {"online": True, "version": data.get("version", "unknown")}
-    except Exception:
-        return {"online": False, "version": None}
+    # Direct probe using 127.0.0.1 to avoid IPv6 localhost issues
+    for host in ("127.0.0.1", "localhost"):
+        try:
+            with socket.create_connection((host, 11434), timeout=0.8):
+                pass
+            req = urllib.request.Request(f"http://{host}:11434/api/version", headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=1.5) as resp:
+                data = json.loads(resp.read().decode())
+                return {"online": True, "version": data.get("version", "unknown")}
+        except Exception:
+            continue
+    return {"online": False, "version": None}
 
 
 # Fast Health Endpoint
@@ -914,8 +916,8 @@ def api_save_analysis(req: AnalysisSaveRequest):
     rows = db.get_all_with_detail(conn)
     results = matcher.match_festivals(rows, profile)
 
-    film_title = profile.get("film_title", "Court-Métrage")
-    name = req.name.strip() if req.name and req.name.strip() else f"Analyse {film_title} ({datetime.date.today().strftime('%d/%m/%Y')})"
+    film_title = profile.get("film_title") or "Short Film"
+    name = req.name.strip() if req.name and req.name.strip() else f"Analysis {film_title} ({datetime.date.today().strftime('%Y-%m-%d')})"
 
     snap_id = db.save_analysis_snapshot(
         conn,
@@ -936,7 +938,7 @@ def api_get_analysis(snapshot_id: int):
     saved_list = db.get_saved_festivals(conn)
     conn.close()
     if not snapshot:
-        raise HTTPException(status_code=404, detail="Analyse introuvable")
+        raise HTTPException(status_code=404, detail="Analysis not found")
 
     saved_map = {s["slug"]: s for s in saved_list}
     for r in snapshot.get("results", []):
@@ -968,9 +970,9 @@ def api_export_analysis_file(snapshot_id: int):
     snapshot = db.get_analysis_snapshot(conn, snapshot_id)
     conn.close()
     if not snapshot:
-        raise HTTPException(status_code=404, detail="Analyse introuvable")
+        raise HTTPException(status_code=404, detail="Analysis not found")
 
-    filename = f"analyse_{snapshot_id}_{snapshot.get('film_title', 'court').replace(' ', '_')}.json"
+    filename = f"analysis_{snapshot_id}_{snapshot.get('film_title', 'film').replace(' ', '_')}.json"
     return Response(
         content=json.dumps(snapshot, ensure_ascii=False, indent=2),
         media_type="application/json; charset=utf-8",
@@ -981,14 +983,14 @@ def api_export_analysis_file(snapshot_id: int):
 @app.post("/api/analyses/import-session")
 def api_import_session(data: AnalysisImportRequest):
     conn = db.get_conn(DB_PATH)
-    name = data.name or f"Import {data.film_title or 'Court'} ({datetime.date.today().strftime('%d/%m/%Y')})"
+    name = data.name or f"Import {data.film_title or 'Film'} ({datetime.date.today().strftime('%Y-%m-%d')})"
     snap_id = db.save_analysis_snapshot(
         conn,
         name=name,
-        film_title=data.film_title or data.profile.get("film_title", "Court"),
+        film_title=data.film_title or data.profile.get("film_title", "Film"),
         profile=data.profile,
         results=data.results,
-        note=data.note or "Importé depuis un fichier session"
+        note=data.note or "Imported from session snapshot"
     )
     conn.close()
     return {"status": "success", "id": snap_id, "name": name}
@@ -1008,8 +1010,8 @@ def _run_deep_search_worker(
         with open(PROFILE_PATH, "w", encoding="utf-8") as f:
             json.dump(prof_dict, f, ensure_ascii=False, indent=2)
 
-        film_title = prof_dict.get("film_title", "Mon Court Métrage")
-        task_mgr.start("deep_search", f"Initialisation de la recherche approfondie pour '{film_title}'...")
+        film_title = prof_dict.get("film_title") or "Your Film"
+        task_mgr.start("deep_search", f"Initializing DeepSearch analysis for '{film_title}'...")
 
         # Build smart queries targeting short film competitions for these categories
         queries = []
@@ -1069,7 +1071,7 @@ def _run_deep_search_worker(
         # Step 1: Listing exploration
         for q_idx, query in enumerate(queries, 1):
             task_mgr.log(
-                f"[1/3] Recherche FilmFreeway : '{query}' ({q_idx}/{len(queries)})...",
+                f"[1/3] Exploring FilmFreeway catalogue: '{query}' ({q_idx}/{len(queries)})...",
                 progress=int(5 + (q_idx / len(queries)) * 25)
             )
             for page in range(1, pages_per_query + 1):
@@ -1084,22 +1086,22 @@ def _run_deep_search_worker(
                     db.upsert_listing_entry(conn, e)
                     newly_found_slugs.append(e["slug"])
                 total_found += len(entries)
-                task_mgr.log(f"  -> '{query}' page {page} : +{len(entries)} festivals trouvés ({total_found} cumulés).")
+                task_mgr.log(f"  -> '{query}' page {page} : +{len(entries)} festivals indexed ({total_found} cumulative).")
                 tot_p = extractor.get_total_pages(resp.text)
                 if tot_p and page >= tot_p:
                     break
 
-        task_mgr.log(f"[1/3] Exploration catalogue terminée ({total_found} festivals répertoriés).", progress=32)
+        task_mgr.log(f"[1/3] Catalogue discovery completed ({total_found} festivals indexed).", progress=32)
 
         # Step 2: Detail analysis (prioritizing newly found slugs)
         rows = db.get_slugs_needing_detail(conn, priority_slugs=newly_found_slugs, limit=max_details)
         total_details = len(rows)
-        task_mgr.log(f"[2/3] Analyse approfondie de {total_details} fiches festivals (tarifs, durées, dates)...", progress=35)
+        task_mgr.log(f"[2/3] Deep analysis of {total_details} festival dossiers (rules, fees, deadlines)...", progress=35)
 
         for idx, row in enumerate(rows, 1):
             slug, url = row["slug"], row["url"]
             pct = 35 + int((idx / max(1, total_details)) * 55)
-            task_mgr.log(f"  [{idx}/{total_details}] Analyse : {slug}", progress=pct)
+            task_mgr.log(f"  [{idx}/{total_details}] Analyzing : {slug}", progress=pct)
 
             resp = crawler.polite_get(session, url, base_delay=delay)
             if resp is None:
@@ -1109,35 +1111,35 @@ def _run_deep_search_worker(
             detail, confidence, needs_rev, reason, raw_text = extractor.parse_festival_detail(resp.text, url, slug)
             if needs_rev and check_ollama_alive()["online"]:
                 try:
-                    task_mgr.log(f"    [IA : {selected_llm_model}] Révision assistée de {slug}...")
+                    task_mgr.log(f"    [AI : {selected_llm_model}] Assisted review for {slug}...")
                     llm_res = llm_extractor.extract_with_llm(raw_text, model=selected_llm_model)
                     if llm_res:
                         detail.update(llm_res)
                         needs_rev = False
                         confidence = 0.85
-                        task_mgr.log(f"    [IA : ✓] {slug} résolu avec succès par {selected_llm_model}")
+                        task_mgr.log(f"    [AI : ✓] {slug} resolved successfully by {selected_llm_model}")
                 except Exception:
                     pass
             db.save_detail(conn, slug, detail, confidence, needs_rev, reason, 14, raw_text)
 
         # Step 3: Match calculation
-        task_mgr.log("[3/3] Calcul des correspondances et adéquation avec votre court-métrage...", progress=95)
+        task_mgr.log("[3/3] Calculating matching scores and eligibility against your film profile...", progress=95)
         all_rows = db.get_all_with_detail(conn)
         matched = matcher.match_festivals(all_rows, prof_dict)
         conn.close()
 
         top_matches = sum(1 for m in matched if m.get("match_pct", 0) >= 70 and m.get("is_eligible", True))
         task_mgr.finish(
-            f"Recherche terminée ! {len(matched)} festivals analysés, dont {top_matches} correspondant très fortement à votre film."
+            f"Analysis complete! {len(matched)} festivals evaluated, including {top_matches} high-compatibility matches for your film."
         )
     except Exception as exc:
-        task_mgr.fail(f"Exception durant la recherche approfondie: {str(exc)}")
+        task_mgr.fail(f"Exception during deep search analysis: {str(exc)}")
 
 
 @app.post("/api/deep-search")
 def api_deep_search(req: DeepSearchRequest):
     if task_mgr.is_running:
-        raise HTTPException(status_code=400, detail="Une recherche est déjà en cours d'exécution.")
+        raise HTTPException(status_code=400, detail="A search is already in progress.")
     
     prof_dict = req.model_dump()
     search_depth = prof_dict.pop("search_depth", "standard")
@@ -1157,7 +1159,7 @@ def api_deep_search(req: DeepSearchRequest):
 # Background Crawl Worker
 def _run_crawl_worker(query: str, max_pages: int, max_details: Optional[int], delay: float):
     try:
-        task_mgr.start("crawl", f"Démarrage de la recherche : '{query}' ({max_pages} pages max)...")
+        task_mgr.start("crawl", f"Starting discovery crawl: '{query}' ({max_pages} pages max)...")
         conn = db.get_conn(DB_PATH)
 
         # 1. Listing Crawl
@@ -1170,61 +1172,61 @@ def _run_crawl_worker(query: str, max_pages: int, max_details: Optional[int], de
             if query:
                 params["q"] = query
 
-            task_mgr.log(f"[Listing] Scrape page {page} ({query})...", progress=int((page / (max_pages + 1)) * 30))
+            task_mgr.log(f"[Listing] Scraping catalogue page {page} ('{query}')...", progress=int((page / (max_pages + 1)) * 30))
             resp = crawler.polite_get(session, crawler.SEARCH_URL, params=params, base_delay=delay)
             if resp is None:
-                task_mgr.log(f"[Listing] Échec sur la page {page}, arrêt.")
+                task_mgr.log(f"[Listing] Network issue on page {page}, stopping crawl.")
                 break
 
             entries = extractor.parse_search_page(resp.text)
             if not entries:
-                task_mgr.log(f"[Listing] Page {page} sans festivals, fin du listing.")
+                task_mgr.log(f"[Listing] Page {page} returned no results, discovery complete.")
                 break
 
             for e in entries:
                 db.upsert_listing_entry(conn, e)
             found += len(entries)
-            task_mgr.log(f"[Listing] Page {page} : +{len(entries)} festivals trouvés ({found} total).")
+            task_mgr.log(f"[Listing] Page {page}: +{len(entries)} festivals indexed ({found} total).")
 
             if total_pages is None:
                 total_pages = extractor.get_total_pages(resp.text)
             if total_pages and page >= total_pages:
                 break
 
-        task_mgr.log(f"[Listing] Indexation terminée. {found} festivals enregistrés en base.", progress=35)
+        task_mgr.log(f"[Listing] Discovery phase completed. {found} festivals saved to database.", progress=35)
 
         # 2. Detail Crawl
         rows = db.get_slugs_needing_detail(conn, limit=max_details)
         total_details = len(rows)
-        task_mgr.log(f"[Détail] {total_details} fiches festivals à enrichir...")
+        task_mgr.log(f"[Detail] {total_details} festival dossiers to enrich...")
 
         for idx, row in enumerate(rows, 1):
             slug, url = row["slug"], row["url"]
             pct = 35 + int((idx / max(1, total_details)) * 60)
-            task_mgr.log(f"[Détail {idx}/{total_details}] {slug}", progress=pct)
+            task_mgr.log(f"[Detail {idx}/{total_details}] {slug}", progress=pct)
 
             resp = crawler.polite_get(session, url, base_delay=delay)
             if resp is None:
                 db.mark_detail_fetch_failed(conn, slug)
-                task_mgr.log(f"  [!] Échec réseau pour {slug}")
+                task_mgr.log(f"  [!] Network failure for {slug}")
                 continue
 
             detail, confidence, needs_rev, reason, raw_text = extractor.parse_festival_detail(resp.text, url, slug)
             db.save_detail(conn, slug, detail, confidence, needs_rev, reason, 14, raw_text)
 
-            flag = f" [!] À vérifier: {reason}" if needs_rev else f" [✓] Confiance: {confidence}"
-            task_mgr.log(f"  -> {slug}: {len(detail.get('categories', []))} cat., {len(detail.get('dates', []))} dates{flag}")
+            flag = f" [!] Review needed: {reason}" if needs_rev else f" [✓] Confidence: {confidence}"
+            task_mgr.log(f"  -> {slug}: {len(detail.get('categories', []))} categories, {len(detail.get('dates', []))} dates{flag}")
 
         conn.close()
-        task_mgr.finish(f"Recherche terminée ! {found} festivals indexés, {total_details} fiches détaillées.")
+        task_mgr.finish(f"Crawl completed! {found} festivals indexed, {total_details} dossiers detailed.")
     except Exception as exc:
-        task_mgr.fail(f"Exception pendant le crawl: {str(exc)}")
+        task_mgr.fail(f"Exception during crawl: {str(exc)}")
 
 
 @app.post("/api/crawl")
 def api_start_crawl(req: CrawlRequest):
     if task_mgr.is_running:
-        raise HTTPException(status_code=400, detail="Une tâche est déjà en cours d'exécution.")
+        raise HTTPException(status_code=400, detail="A task is already running.")
     t = threading.Thread(target=_run_crawl_worker, args=(req.query, req.max_pages, req.max_details, req.delay), daemon=True)
     t.start()
     return {"status": "started", "task": "crawl"}
@@ -1233,42 +1235,42 @@ def api_start_crawl(req: CrawlRequest):
 # Background LLM Worker
 def _run_llm_worker():
     try:
-        task_mgr.start("llm_review", "Démarrage de la revue IA locale (Ollama)...")
+        task_mgr.start("llm_review", "Starting on-device AI review (Ollama)...")
         conn = db.get_conn(DB_PATH)
         queue = db.get_review_queue_with_raw(conn)
         total = len(queue)
-        task_mgr.log(f"[LLM] {total} festival(s) en attente de révision.")
+        task_mgr.log(f"[LLM] {total} festival(s) in review queue.")
 
         if total == 0:
             conn.close()
-            task_mgr.finish("Aucun festival en attente de révision !")
+            task_mgr.finish("No festivals pending AI review!")
             return
 
         fixed, still_stuck = 0, 0
         for i, item in enumerate(queue, 1):
             pct = int((i / total) * 90)
             name = item["name"] or item["slug"]
-            task_mgr.log(f"[LLM {i}/{total}] Analyse de '{name}'...", progress=pct)
+            task_mgr.log(f"[LLM {i}/{total}] Analyzing '{name}'...", progress=pct)
 
             res = llm_extractor.extract_with_llm(item["raw_text"])
             if res:
                 db.save_llm_correction(conn, item["slug"], res)
                 fixed += 1
-                task_mgr.log(f"  [✓] '{name}' corrigé avec succès par l'IA !")
+                task_mgr.log(f"  [✓] '{name}' successfully parsed and corrected by AI!")
             else:
                 still_stuck += 1
-                task_mgr.log(f"  [?] Échec d'extraction IA pour '{name}'.")
+                task_mgr.log(f"  [?] AI extraction unsuccessful for '{name}'.")
 
         conn.close()
-        task_mgr.finish(f"Revue IA terminée : {fixed} corrigé(s), {still_stuck} restant(s).")
+        task_mgr.finish(f"AI review completed: {fixed} resolved, {still_stuck} remaining.")
     except Exception as exc:
-        task_mgr.fail(f"Exception revue LLM: {str(exc)}")
+        task_mgr.fail(f"Exception during LLM review: {str(exc)}")
 
 
 @app.post("/api/llm-review")
 def api_start_llm_review():
     if task_mgr.is_running:
-        raise HTTPException(status_code=400, detail="Une tâche est déjà en cours d'exécution.")
+        raise HTTPException(status_code=400, detail="A task is already running.")
     t = threading.Thread(target=_run_llm_worker, daemon=True)
     t.start()
     return {"status": "started", "task": "llm_review"}
@@ -1285,18 +1287,20 @@ def api_unload_ollama():
     try:
         # Stop all running models in Ollama ps
         try:
-            resp = requests.get("http://localhost:11434/api/ps", timeout=3)
+            resp = requests.get("http://127.0.0.1:11434/api/ps", timeout=3)
             if resp.status_code == 200:
                 for m in resp.json().get("models", []):
                     m_name = m.get("name")
                     if m_name:
-                        requests.post("http://localhost:11434/api/generate", json={"model": m_name, "keep_alive": 0}, timeout=3)
+                        requests.post("http://127.0.0.1:11434/api/generate", json={"model": m_name, "keep_alive": 0}, timeout=3)
         except Exception:
             pass
 
-        cmd = [os.path.expandvars(r"%LOCALAPPDATA%\Programs\Ollama\ollama.exe"), "stop", "qwen2.5:0.5b"]
-        subprocess.run(cmd, capture_output=True, text=True, timeout=5)
-        return {"status": "success", "message": "Modèles déchargés de la RAM avec succès !"}
+        import shutil
+        ollama_bin = shutil.which("ollama") or os.path.expandvars(r"%LOCALAPPDATA%\Programs\Ollama\ollama.exe")
+        if os.path.exists(ollama_bin):
+            subprocess.run([ollama_bin, "stop", "qwen2.5:0.5b"], capture_output=True, text=True, timeout=5)
+        return {"status": "success", "message": "Models unloaded from RAM successfully!"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
@@ -1327,7 +1331,7 @@ def api_get_models():
 
     if ollama_status["online"]:
         try:
-            req_tags = urllib.request.Request("http://localhost:11434/api/tags")
+            req_tags = urllib.request.Request("http://127.0.0.1:11434/api/tags")
             with urllib.request.urlopen(req_tags, timeout=2.0) as resp:
                 tags_data = json.loads(resp.read().decode())
                 for m in tags_data.get("models", []):
@@ -1339,7 +1343,7 @@ def api_get_models():
             pass
 
         try:
-            req_ps = urllib.request.Request("http://localhost:11434/api/ps")
+            req_ps = urllib.request.Request("http://127.0.0.1:11434/api/ps")
             with urllib.request.urlopen(req_ps, timeout=2.0) as resp:
                 ps_data = json.loads(resp.read().decode())
                 for m in ps_data.get("models", []):
@@ -1358,7 +1362,7 @@ def api_get_models():
         actual_size = None
         if is_inst:
             size_bytes = installed_models_map[name].get("size", 0)
-            actual_size = f"{round(size_bytes / (1024**2), 1)} Mo" if size_bytes < 1024**3 else f"{round(size_bytes / (1024**3), 2)} Go"
+            actual_size = f"{round(size_bytes / (1024**2), 1)} MB" if size_bytes < 1024**3 else f"{round(size_bytes / (1024**3), 2)} GB"
 
         models_out.append({
             **cm,
@@ -1371,20 +1375,20 @@ def api_get_models():
     for inst_name, inst_data in installed_models_map.items():
         if inst_name not in seen_names and not inst_name.endswith(":latest"):
             size_b = inst_data.get("size", 0)
-            size_str = f"{round(size_b / (1024**2), 1)} Mo" if size_b < 1024**3 else f"{round(size_b / (1024**3), 2)} Go"
+            size_str = f"{round(size_b / (1024**2), 1)} MB" if size_b < 1024**3 else f"{round(size_b / (1024**3), 2)} GB"
             models_out.append({
                 "name": inst_name,
                 "display_name": inst_name,
                 "family": inst_data.get("details", {}).get("family", "Custom"),
-                "parameters": inst_data.get("details", {}).get("parameter_size", "Inconnu"),
+                "parameters": inst_data.get("details", {}).get("parameter_size", "Unknown"),
                 "disk_size": size_str,
                 "actual_disk_size": size_str,
                 "ram_usage": "Variable",
-                "speed_core_i3": "Selon modèle",
+                "speed_core_i3": "Model dependent",
                 "accuracy_rate": "Variable",
-                "tier_badge": "Modèle Personnalisé",
+                "tier_badge": "Custom Model",
                 "tier_color": "slate",
-                "description": "Modèle tiers installé.",
+                "description": "Locally installed custom model.",
                 "is_installed": True,
                 "is_running": (inst_name in running_models_set),
                 "is_active_default": (inst_name == active_model),
@@ -1405,9 +1409,9 @@ def api_get_models():
 def api_pull_model(req: ModelActionRequest):
     name = req.name.strip()
     if not name:
-        raise HTTPException(status_code=400, detail="Nom du modèle requis.")
+        raise HTTPException(status_code=400, detail="Model name is required.")
     if model_pull_mgr.is_pulling:
-        raise HTTPException(status_code=400, detail="Un téléchargement est déjà en cours.")
+        raise HTTPException(status_code=400, detail="A download is already in progress.")
     t = threading.Thread(target=_run_model_pull_worker, args=(name,), daemon=True)
     t.start()
     return {"status": "started", "model": name}
@@ -1421,12 +1425,12 @@ def api_pull_status():
 @app.delete("/api/models/{model_name}")
 def api_delete_model(model_name: str):
     try:
-        url = "http://localhost:11434/api/delete"
+        url = "http://127.0.0.1:11434/api/delete"
         resp = requests.delete(url, json={"name": model_name}, timeout=15)
         if resp.status_code == 200:
-            return {"status": "success", "message": f"Modèle '{model_name}' supprimé avec succès !"}
+            return {"status": "success", "message": f"Model '{model_name}' deleted successfully!"}
         else:
-            return {"status": "error", "message": f"Erreur Ollama HTTP {resp.status_code}"}
+            return {"status": "error", "message": f"Ollama HTTP error {resp.status_code}"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
@@ -1441,13 +1445,51 @@ def api_select_model(req: ModelActionRequest):
 
 @app.post("/api/models/start-daemon")
 def api_start_ollama_daemon():
+    # 1. Check if Ollama is already running
+    alive = check_ollama_alive()
+    if alive.get("online"):
+        return {"status": "success", "message": f"Local Ollama server is already running (v{alive.get('version')})."}
+
+    # 2. Locate Ollama executable
+    import shutil
+    ollama_exe = shutil.which("ollama")
+    if not ollama_exe:
+        candidates = [
+            os.path.expandvars(r"%LOCALAPPDATA%\Programs\Ollama\ollama.exe"),
+            r"C:\Program Files\Ollama\ollama.exe",
+            os.path.expandvars(r"%ProgramFiles%\Ollama\ollama.exe"),
+        ]
+        for c in candidates:
+            if os.path.exists(c):
+                ollama_exe = c
+                break
+
+    if not ollama_exe or not os.path.exists(ollama_exe):
+        return {"status": "error", "message": "Ollama executable not found. Please install Ollama from https://ollama.com"}
+
     try:
-        ollama_exe = os.path.expandvars(r"%LOCALAPPDATA%\Programs\Ollama\ollama.exe")
-        subprocess.Popen([ollama_exe, "serve"], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0)
-        time.sleep(1.5)
-        return {"status": "success", "message": "Serveur Ollama démarré avec succès !"}
+        # 3. Launch completely silently without console window!
+        creationflags = 0
+        if sys.platform == "win32":
+            creationflags = 0x08000000 | 0x00000200  # CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP
+
+        subprocess.Popen(
+            [ollama_exe, "serve"],
+            creationflags=creationflags,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            stdin=subprocess.DEVNULL,
+        )
+
+        for _ in range(25):
+            time.sleep(0.2)
+            alive = check_ollama_alive()
+            if alive.get("online"):
+                return {"status": "success", "message": f"Ollama server started successfully! (v{alive.get('version')})"}
+
+        return {"status": "success", "message": "Ollama service launched in background."}
     except Exception as e:
-        return {"status": "error", "message": str(e)}
+        return {"status": "error", "message": f"Failed to start Ollama: {str(e)}"}
 
 
 @app.get("/api/export/excel")
@@ -1777,8 +1819,8 @@ def serve_index():
 if __name__ == "__main__":
     import webbrowser
     print("==================================================")
-    print("  FilmFreeway Intel — Serveur Web Moderne")
-    print("  Accessible sur : http://127.0.0.1:8000")
+    print("  FilmFreeway DeepSearch — Local Server")
+    print("  Available at: http://127.0.0.1:8000")
     print("==================================================")
     if "--no-browser" not in sys.argv:
         try:

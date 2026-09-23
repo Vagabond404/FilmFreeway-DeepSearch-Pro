@@ -104,11 +104,11 @@ def evaluate_category_eligibility(cat, profile):
     reasons = []
     is_recommended = False
 
-    # 1. Scénario non filmé
+    # 1. Unproduced Screenplay
     if re.search(r"\b(screenplay|script|teleplay|stage play|treatment)\b", full_text) and not re.search(r"\b(film|short|narrative|screening)\b", full_text):
-        blockers.append("Catégorie réservée aux scénarios écrits (votre projet est un film produit)")
+        blockers.append("Category reserved for unproduced scripts (your project is a completed film)")
 
-    # 2. Exclusivités thématiques & types de projet
+    # 2. Thematic & Format Exclusivity
     is_cat_doc = bool(re.search(r"\b(documentary|docu|documentaire)\b", full_text))
     is_cat_anim = bool(re.search(r"\b(animation|animated|anime)\b", full_text))
     is_cat_music_vid = bool(re.search(r"\b(music video|clip musical|music vid)\b", full_text))
@@ -116,28 +116,28 @@ def evaluate_category_eligibility(cat, profile):
     is_cat_experimental = bool(re.search(r"\b(experimental|video art|art vidéo|avant-garde)\b", full_text))
 
     if is_cat_doc and project_type not in ("documentary", "docu"):
-        blockers.append(f"Réservé aux documentaires (votre film est '{project_type.title()}')")
+        blockers.append(f"Reserved for documentaries (your project is '{project_type.title()}')")
     elif is_cat_anim and project_type not in ("animation", "anime"):
-        blockers.append(f"Réservé aux films d'animation (votre film est '{project_type.title()}')")
+        blockers.append(f"Reserved for animated films (your project is '{project_type.title()}')")
     elif is_cat_music_vid and project_type != "music_video":
-        blockers.append(f"Réservé aux clips musicaux (votre film est '{project_type.title()}')")
+        blockers.append(f"Reserved for music videos (your project is '{project_type.title()}')")
     elif is_cat_vr and project_type != "vr_360":
-        blockers.append("Réservé aux expériences VR / 360")
+        blockers.append("Reserved for VR / 360 immersive experiences")
 
     if project_type in ("documentary", "docu") and is_cat_doc:
-        reasons.append("Catégorie Documentaire dédiée")
+        reasons.append("Dedicated Documentary category")
         is_recommended = True
     elif project_type in ("animation", "anime") and is_cat_anim:
-        reasons.append("Catégorie Animation dédiée")
+        reasons.append("Dedicated Animation category")
         is_recommended = True
     elif project_type == "music_video" and is_cat_music_vid:
-        reasons.append("Catégorie Clip Musical dédiée")
+        reasons.append("Dedicated Music Video category")
         is_recommended = True
     elif project_type == "experimental" and is_cat_experimental:
-        reasons.append("Catégorie Expérimentale / Art Vidéo dédiée")
+        reasons.append("Dedicated Experimental / Video Art category")
         is_recommended = True
     elif project_type == "fiction" and any(k in full_text for k in ["short", "fiction", "narrative", "drama", "comedy", "court"]):
-        reasons.append("Catégorie Fiction / Court-métrage adaptée")
+        reasons.append("Appropriate Fiction / Short Film category")
 
     # 3. Bornes de durée (Runtime)
     range_match = re.search(r"(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*(?:mins?|minutes?|m\b)", full_text)

@@ -87,62 +87,59 @@
   <!-- ================= TOP NAVIGATION ================= -->
   <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-16 gap-3">
         
         <!-- Logo -->
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
-            <i data-lucide="clapperboard" class="w-5 h-5"></i>
+        <div class="flex items-center space-x-2.5 shrink-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+            <i data-lucide="clapperboard" class="w-4 h-4"></i>
           </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <span class="font-extrabold text-lg tracking-tight text-slate-900">FilmFreeway <span class="text-brand-600">DeepSearch</span></span>
-              <span class="px-2 py-0.5 text-[11px] font-bold rounded-full bg-brand-50 text-brand-700 border border-brand-200">5 Criteria Tiers</span>
-            </div>
-            <p class="text-xs text-slate-500 hidden sm:block">Comprehensive festival intelligence, rules verification, and blocker detection</p>
+          <div class="flex items-center space-x-1.5">
+            <span class="font-extrabold text-base tracking-tight text-slate-900">FilmFreeway <span class="text-brand-600">DeepSearch</span></span>
+            <span class="px-1.5 py-0.5 text-[10px] font-bold rounded-md bg-brand-50 text-brand-700 border border-brand-200">Pro</span>
           </div>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex items-center space-x-1 p-1 bg-slate-100/90 rounded-2xl border border-slate-200/80">
-          <button id="nav-btn-search" onclick="switchNavTab('search')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-white text-brand-600 shadow-sm">
+        <div class="flex items-center space-x-1 p-1 bg-slate-100/90 rounded-2xl border border-slate-200/80 shrink-0">
+          <button id="nav-btn-search" onclick="switchNavTab('search')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-white text-brand-600 shadow-sm">
             <i data-lucide="search" class="w-3.5 h-3.5"></i>
-            <span>Search & Festivals</span>
+            <span>Search & Match</span>
           </button>
-          <button id="nav-btn-bookmarks" onclick="switchNavTab('bookmarks')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
+          <button id="nav-btn-bookmarks" onclick="switchNavTab('bookmarks')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
             <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500"></i>
-            <span>My Watchlist</span>
+            <span>Watchlist</span>
             <span id="nav-bookmark-badge" class="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-100 text-amber-800 font-bold">0</span>
           </button>
-          <button id="nav-btn-analyses" onclick="switchNavTab('analyses')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
+          <button id="nav-btn-analyses" onclick="switchNavTab('analyses')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
             <i data-lucide="folder-clock" class="w-3.5 h-3.5 text-indigo-500"></i>
-            <span>History & Sessions</span>
+            <span>History</span>
             <span id="nav-analyses-badge" class="px-1.5 py-0.2 rounded-full text-[10px] bg-indigo-100 text-indigo-800 font-bold">0</span>
           </button>
-          <button id="nav-btn-settings" onclick="switchNavTab('settings')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
+          <button id="nav-btn-settings" onclick="switchNavTab('settings')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
             <i data-lucide="settings" class="w-3.5 h-3.5"></i>
             <span>Settings & AI</span>
           </button>
         </div>
 
         <!-- Right Quick Actions -->
-        <div class="flex items-center space-x-2.5">
+        <div class="flex items-center space-x-2 shrink-0">
           <!-- Ollama status -->
-          <div id="ollama-pill" class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-pointer" onclick="switchNavTab('settings')" title="Click to manage Ollama models">
+          <div id="ollama-pill" class="hidden lg:flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-pointer" onclick="switchNavTab('settings')" title="Manage local Ollama models">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span id="ollama-pill-text">Local AI Ready</span>
           </div>
 
           <!-- Free RAM Button -->
-          <button onclick="unloadModels()" title="Unload model to free system memory" class="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-white hover:bg-amber-50 hover:text-amber-700 text-slate-700 border border-slate-200 shadow-sm transition">
+          <button onclick="unloadModels()" title="Free RAM by unloading idle AI models" class="flex items-center space-x-1.5 px-2.5 py-1.5 text-xs font-bold rounded-xl bg-white hover:bg-amber-50 hover:text-amber-700 text-slate-700 border border-slate-200 shadow-sm transition">
             <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
-            <span>Free RAM</span>
+            <span class="hidden sm:inline">Free RAM</span>
           </button>
 
           <!-- Quit App Button -->
-          <button onclick="shutdownApp()" title="Shut down the local server cleanly" class="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-white hover:bg-rose-50 hover:text-rose-700 text-slate-600 border border-slate-200 shadow-sm transition">
+          <button onclick="shutdownApp()" title="Shut down the local server cleanly" class="flex items-center space-x-1.5 px-2.5 py-1.5 text-xs font-bold rounded-xl bg-white hover:bg-rose-50 hover:text-rose-700 text-slate-600 border border-slate-200 shadow-sm transition">
             <i data-lucide="power" class="w-3.5 h-3.5 text-rose-500"></i>
-            <span>Quit</span>
+            <span class="hidden sm:inline">Quit</span>
           </button>
         </div>
 
@@ -185,27 +182,27 @@
         </p>
       </div>
 
-      <!-- Navigation des 5 Catégories -->
+      <!-- Navigation of the 5 Criteria Tiers -->
       <div class="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/60">
         <button type="button" onclick="switchCategoryTab('cat1')" id="tab-cat1" class="cat-tab-btn flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 step-tab-active">
           <i data-lucide="user-check" class="w-4 h-4"></i>
-          <span>1. Équipe & Réalisateur</span>
+          <span>1. Team & Filmmaker</span>
         </button>
         <button type="button" onclick="switchCategoryTab('cat2')" id="tab-cat2" class="cat-tab-btn flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900">
           <i data-lucide="film" class="w-4 h-4"></i>
-          <span>2. Fiche Technique</span>
+          <span>2. Project Specifications</span>
         </button>
         <button type="button" onclick="switchCategoryTab('cat3')" id="tab-cat3" class="cat-tab-btn flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900">
           <i data-lucide="cpu" class="w-4 h-4"></i>
-          <span>3. Politique IA</span>
+          <span>3. AI Policy</span>
         </button>
         <button type="button" onclick="switchCategoryTab('cat4')" id="tab-cat4" class="cat-tab-btn flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900">
           <i data-lucide="globe" class="w-4 h-4"></i>
-          <span>4. Diffusion & Droits</span>
+          <span>4. Distribution & Rights</span>
         </button>
         <button type="button" onclick="switchCategoryTab('cat5')" id="tab-cat5" class="cat-tab-btn flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900">
           <i data-lucide="target" class="w-4 h-4"></i>
-          <span>5. Cible & Festivals</span>
+          <span>5. Targets & Criteria</span>
         </button>
       </div>
 
@@ -213,61 +210,61 @@
       <form onsubmit="startDeepSearch(event)" class="space-y-6">
         
         <!-- ============================================ -->
-        <!-- CATEGORY 1: PROFIL DU RÉALISATEUR & ÉQUIPE -->
+        <!-- CATEGORY 1: FILMMAKER & TEAM PROFILE -->
         <!-- ============================================ -->
         <div id="content-cat1" class="space-y-5 animate-in fade-in duration-150">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             
-            <!-- Âge / Tranche d'âge -->
+            <!-- Director Age Group -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Âge du réalisateur</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Director Age Group</label>
               <select id="p-director-age" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-medium outline-none">
-                <option value="adult" selected>Adulte (Tout public)</option>
-                <option value="young_adult">Young Adult (18 – 25 ans / Jeunes Talents)</option>
-                <option value="youth">Youth / Mineur (< 18 ans / Scolaire / Teen)</option>
+                <option value="adult" selected>Adult (General audience)</option>
+                <option value="young_adult">Young Adult (18 – 25 years / Emerging Talent)</option>
+                <option value="youth">Youth (&lt; 18 years / Student / Teen)</option>
               </select>
-              <p class="text-[11px] text-slate-400">Requis pour les catégories réservées aux jeunes cinéastes.</p>
+              <p class="text-[11px] text-slate-400">Required for youth and young talent festival categories.</p>
             </div>
 
-            <!-- Statut d'étudiant -->
+            <!-- Student Status -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
               <div class="flex items-center justify-between">
-                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Statut Étudiant</label>
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Student Status</label>
                 <input type="checkbox" id="p-is-student" onchange="toggleStudentFields(this.checked)" class="w-4 h-4 rounded text-brand-600">
               </div>
-              <input type="text" id="p-school-name" placeholder="Nom de l'école (ex: La Fémis, Gobelins...)" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
+              <input type="text" id="p-school-name" placeholder="School or university name (e.g., USC, NYU, NFTS...)" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
               <label class="flex items-center space-x-2 text-[11px] text-slate-600 cursor-pointer pt-1">
                 <input type="checkbox" id="p-shot-during-studies" class="rounded text-brand-600">
-                <span>Film tourné pendant les études</span>
+                <span>Film produced while enrolled as a student</span>
               </label>
             </div>
 
-            <!-- Premier Film (First-Time Filmmaker) -->
+            <!-- First-Time Filmmaker -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Niveau d'expérience</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Experience Level</label>
               <select id="p-is-first-time" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-medium outline-none">
-                <option value="false">Réalisateur avec expérience</option>
+                <option value="false">Experienced Filmmaker</option>
                 <option value="true">Debut Film (First-Time Filmmaker)</option>
               </select>
-              <p class="text-[11px] text-slate-400">Ouvre les prix « Best Debut » et « First-Time Director ».</p>
+              <p class="text-[11px] text-slate-400">Qualifies for "Best Debut" and "First-Time Director" awards.</p>
             </div>
 
-            <!-- Nationalité & Résidence -->
+            <!-- Nationality & Residence -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Nationalité & Résidence</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Nationality & Residence</label>
               <div class="space-y-2">
-                <input type="text" id="p-director-nationality" value="France" placeholder="Pays de citoyenneté" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
-                <input type="text" id="p-director-residence" value="France" placeholder="Current Country of Residencele" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
+                <input type="text" id="p-director-nationality" value="" placeholder="Country of citizenship" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
+                <input type="text" id="p-director-residence" value="" placeholder="Current country of residence" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
               </div>
             </div>
 
-            <!-- Représentation & Démographie -->
+            <!-- Targeted Representation -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Représentation Ciblée</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Targeted Representation</label>
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <label class="flex items-center space-x-2 cursor-pointer text-[11px] text-slate-700">
                   <input type="checkbox" id="demo-female" class="rounded text-brand-600">
-                  <span>Réalisatrice</span>
+                  <span>Female Director</span>
                 </label>
                 <label class="flex items-center space-x-2 cursor-pointer text-[11px] text-slate-700">
                   <input type="checkbox" id="demo-lgbtq" class="rounded text-brand-600">
@@ -275,23 +272,23 @@
                 </label>
                 <label class="flex items-center space-x-2 cursor-pointer text-[11px] text-slate-700">
                   <input type="checkbox" id="demo-indigenous" class="rounded text-brand-600">
-                  <span>Autochtone</span>
+                  <span>Indigenous</span>
                 </label>
                 <label class="flex items-center space-x-2 cursor-pointer text-[11px] text-slate-700">
                   <input type="checkbox" id="demo-minority" class="rounded text-brand-600">
-                  <span>Minorité / Diaspora</span>
+                  <span>Minority / Diaspora</span>
                 </label>
               </div>
             </div>
 
             <!-- Credited Roles -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Rôle crédité</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Credited Role</label>
               <select id="p-credited-roles" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-medium outline-none">
-                <option value="director_only">Réalisateur seul</option>
-                <option value="co_director">Co-réalisateur</option>
-                <option value="director_producer">Réalisateur & Producteur</option>
-                <option value="director_writer">Réalisateur & Scénariste</option>
+                <option value="director_only">Sole Director</option>
+                <option value="co_director">Co-Director</option>
+                <option value="director_producer">Director & Producer</option>
+                <option value="director_writer">Director & Writer</option>
               </select>
             </div>
 
@@ -299,22 +296,22 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- CATEGORY 2: FICHE TECHNIQUE & ARTISTIQUE -->
+        <!-- CATEGORY 2: PROJECT SPECIFICATIONS -->
         <!-- ============================================ -->
         <div id="content-cat2" class="hidden space-y-5 animate-in fade-in duration-150">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             
-            <!-- Titre & Durée -->
+            <!-- Title & Runtime -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Titre de l'œuvre</label>
-                <input type="text" id="p-film-title" value="Mon Court Métrage" required class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-bold">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Film Title</label>
+                <input type="text" id="p-film-title" placeholder="My Short Film" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-bold">
               </div>
 
               <div>
                 <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
-                  <span>Durée précise (minutes)</span>
-                  <span id="runtime-category-tag" class="text-brand-600 font-bold">Court standard (3-15 min)</span>
+                  <span>Exact Runtime (minutes)</span>
+                  <span id="runtime-category-tag" class="text-brand-600 font-bold">Standard Short (3-15 min)</span>
                 </div>
                 <input type="number" id="p-runtime-minutes" value="15" min="1" max="180" oninput="updateRuntimeTier(this.value)" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-bold">
               </div>
@@ -322,86 +319,86 @@
 
             <!-- Project Type -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Project Type (Project Type)</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Project Format / Genre</label>
               <select id="p-project-type" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-semibold outline-none">
-                <option value="fiction" selected>Fiction (Narratif)</option>
-                <option value="documentary">Documentaire</option>
+                <option value="fiction" selected>Narrative Fiction</option>
+                <option value="documentary">Documentary</option>
                 <option value="animation">Animation</option>
-                <option value="experimental">Expérimental</option>
-                <option value="music_video">Clip musical (Music Video)</option>
-                <option value="web_series">Série Web / Pilote</option>
-                <option value="vr_360">Réalité Virtuelle / 360°</option>
-                <option value="art_installation">Film d'art / Installation</option>
+                <option value="experimental">Experimental</option>
+                <option value="music_video">Music Video</option>
+                <option value="web_series">Web Series / TV Pilot</option>
+                <option value="vr_360">Virtual Reality / 360°</option>
+                <option value="art_installation">Art Installation / Video Art</option>
               </select>
             </div>
 
-            <!-- Date d'achèvement (Completion Date) -->
+            <!-- Completion Date -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Date d'achèvement (Completion Date)</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Completion Date</label>
               <input type="date" id="p-completion-date" value="2025-06-01" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-semibold outline-none">
-              <p class="text-[11px] text-slate-400">80% des festivals compétitifs rejettent les films de plus de 2 ans.</p>
+              <p class="text-[11px] text-slate-400">80% of competitive festivals reject films completed over 2 years ago.</p>
             </div>
 
-            <!-- Budget de production -->
+            <!-- Production Budget -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Budget de production</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Production Budget</label>
               <div class="flex space-x-2">
                 <input type="number" id="p-production-budget" value="5000" class="flex-1 px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-semibold">
                 <select id="p-budget-currency" class="px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-bold">
-                  <option value="EUR">EUR (€)</option>
                   <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
                   <option value="GBP">GBP (£)</option>
                   <option value="CAD">CAD ($)</option>
                 </select>
               </div>
-              <div class="text-[11px] text-emerald-700 font-semibold" id="budget-tier-label">Micro-budget (< 5 000 $)</div>
+              <div class="text-[11px] text-emerald-700 font-semibold" id="budget-tier-label">Micro-budget (&lt; $5,000)</div>
             </div>
 
-            <!-- Pays & Tournage -->
+            <!-- Country & Filming -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Origine & Tournage</label>
-              <input type="text" id="p-country-origin" value="France" placeholder="Pays principal de production" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
-              <input type="text" id="p-country-filming" value="France" placeholder="Lieu réel de tournage" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Origin & Filming Location</label>
+              <input type="text" id="p-country-origin" value="" placeholder="Principal production country" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
+              <input type="text" id="p-country-filming" value="" placeholder="Principal filming location" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
             </div>
 
-            <!-- Langue & Sous-titres -->
+            <!-- Language & Subtitles -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Langue & Sous-titrage</label>
-              <input type="text" id="p-spoken-language" value="Français" placeholder="Langue originale parlée" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Language & Subtitles</label>
+              <input type="text" id="p-spoken-language" value="English" placeholder="Primary spoken language" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl outline-none">
               <label class="flex items-center space-x-2 text-[11px] text-slate-700 cursor-pointer pt-1">
                 <input type="checkbox" id="p-subtitles-english" checked class="rounded text-brand-600">
-                <span>Sous-titres anglais disponibles (Obligatoire festivals inter.)</span>
+                <span>English subtitles available (Required by international festivals)</span>
               </label>
             </div>
 
-            <!-- Spécifications d'image -->
+            <!-- Visual Specifications -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 lg:col-span-3">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Spécifications Techniques de l'image</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Technical Visual Specifications</label>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 <div>
-                  <span class="text-[11px] text-slate-500">Couleur :</span>
+                  <span class="text-[11px] text-slate-500">Color:</span>
                   <select id="p-color-type" class="w-full mt-1 px-3 py-1.5 bg-white border border-slate-200 rounded-xl outline-none font-medium">
-                    <option value="color">Couleur (Color)</option>
-                    <option value="black_and_white">Noir & Blanc (B&W)</option>
-                    <option value="mixed">Mixte</option>
+                    <option value="color">Color</option>
+                    <option value="black_and_white">Black & White (B&W)</option>
+                    <option value="mixed">Mixed</option>
                   </select>
                 </div>
                 <div>
-                  <span class="text-[11px] text-slate-500">Ratio d'aspect :</span>
+                  <span class="text-[11px] text-slate-500">Aspect Ratio:</span>
                   <select id="p-aspect-ratio" class="w-full mt-1 px-3 py-1.5 bg-white border border-slate-200 rounded-xl outline-none font-medium">
                     <option value="16:9">16:9 (Standard HD/4K)</option>
-                    <option value="2.39:1">2.39:1 (Scope / Cinéma)</option>
-                    <option value="4:3">4:3 (Vintage)</option>
-                    <option value="1:1">1:1 (Carré)</option>
+                    <option value="2.39:1">2.39:1 (Scope / Anamorphic)</option>
+                    <option value="4:3">4:3 (Vintage / Academy)</option>
+                    <option value="1:1">1:1 (Square)</option>
                   </select>
                 </div>
                 <div>
-                  <span class="text-[11px] text-slate-500">Format de capture :</span>
+                  <span class="text-[11px] text-slate-500">Capture Format:</span>
                   <select id="p-capture-format" class="w-full mt-1 px-3 py-1.5 bg-white border border-slate-200 rounded-xl outline-none font-medium">
-                    <option value="digital">Numérique</option>
-                    <option value="35mm">35mm</option>
-                    <option value="16mm">16mm</option>
-                    <option value="smartphone">Smartphone</option>
+                    <option value="digital">Digital</option>
+                    <option value="35mm">35mm Film</option>
+                    <option value="16mm">16mm Film</option>
+                    <option value="smartphone">Smartphone / Mobile</option>
                   </select>
                 </div>
               </div>
@@ -411,45 +408,45 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- CATEGORY 3: POLITIQUES RELATIVES À L'IA -->
+        <!-- CATEGORY 3: AI INTEGRATION & ETHICS POLICY -->
         <!-- ============================================ -->
         <div id="content-cat3" class="hidden space-y-5 animate-in fade-in duration-150">
           <div class="max-w-2xl mx-auto p-5 rounded-3xl bg-slate-50 border border-slate-200/80 space-y-4">
             
             <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Taux d'intégration de l'Intelligence Artificielle (IA)</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Artificial Intelligence (AI) Integration Level</label>
               <div class="space-y-2">
                 <label class="flex items-start space-x-3 p-3 rounded-2xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer transition">
                   <input type="radio" name="p-ai-level" value="none" checked class="mt-1 text-brand-600">
                   <div>
-                    <span class="text-xs font-bold text-slate-900">Aucune IA (0%) — Tournage et création purement traditionnelle</span>
-                    <p class="text-[11px] text-slate-500">100% éligible auprès de tous les festivals traditionnels sans aucun risque de bannissement.</p>
+                    <span class="text-xs font-bold text-slate-900">No AI (0%) — 100% Traditional human production</span>
+                    <p class="text-[11px] text-slate-500">100% eligible across traditional festivals with zero risk of disqualification.</p>
                   </div>
                 </label>
 
                 <label class="flex items-start space-x-3 p-3 rounded-2xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer transition">
                   <input type="radio" name="p-ai-level" value="hybrid" class="mt-1 text-brand-600">
                   <div>
-                    <span class="text-xs font-bold text-slate-900">Hybride / Partiel — Tournage réel avec retouches, VFX ou voix IA</span>
-                    <p class="text-[11px] text-slate-500">Éligible à la plupart des festivals avec déclaration obligatoire (AI Disclosure).</p>
+                    <span class="text-xs font-bold text-slate-900">Hybrid / Partial — Live action footage with AI VFX, touchups, or voice synthesis</span>
+                    <p class="text-[11px] text-slate-500">Eligible for most festivals with mandatory AI transparency disclosure.</p>
                   </div>
                 </label>
 
                 <label class="flex items-start space-x-3 p-3 rounded-2xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer transition">
                   <input type="radio" name="p-ai-level" value="full" class="mt-1 text-brand-600">
                   <div>
-                    <span class="text-xs font-bold text-slate-900">100% Génératif — Images, vidéos ou son générés par IA (Sora, Runway, Midjourney...)</span>
-                    <p class="text-[11px] text-slate-500">Cible en priorité les festivals spécialisés IA et les catégories d'art numérique.</p>
+                    <span class="text-xs font-bold text-slate-900">100% Generative — Pure AI generated visuals or sound (Sora, Runway, Midjourney...)</span>
+                    <p class="text-[11px] text-slate-500">Targets specialized AI festivals and digital art / new media categories.</p>
                   </div>
                 </label>
               </div>
             </div>
 
-            <!-- Déclaration IA prête -->
+            <!-- AI Disclosure Statement -->
             <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
               <div>
-                <span class="text-xs font-bold text-slate-800">Déclaration de transparence (AI Disclosure)</span>
-                <p class="text-[11px] text-slate-500">Avez-vous une déclaration précisant les outils IA utilisés pour le jury ?</p>
+                <span class="text-xs font-bold text-slate-800">AI Transparency Disclosure Statement</span>
+                <p class="text-[11px] text-slate-500">Do you have a signed declaration specifying AI tools used for festival programmers?</p>
               </div>
               <input type="checkbox" id="p-ai-disclosure" class="w-4 h-4 rounded text-brand-600">
             </div>
@@ -458,52 +455,52 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- CATEGORY 4: DIFFUSION, PREMIÈRES & DROITS -->
+        <!-- CATEGORY 4: PREMIERES, DISTRIBUTION & RIGHTS -->
         <!-- ============================================ -->
         <div id="content-cat4" class="hidden space-y-5 animate-in fade-in duration-150">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             
-            <!-- Exigence de Première disponible -->
+            <!-- Available Premiere Status -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
               <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Available Premiere Status pour votre film</label>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Available Premiere Status for Your Film</label>
                 <select id="p-premiere-avail" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-bold outline-none">
-                  <option value="world" selected>🌟 World Premiere (Jamais projeté nulle part dans le monde)</option>
-                  <option value="international">🌍 International Premiere (Projeté uniquement dans son pays d'origine)</option>
-                  <option value="national">🇫🇷 National Premiere (Jamais projeté dans le pays hôte du festival)</option>
-                  <option value="regional">📍 Regional / State Premiere (Première dans la région)</option>
-                  <option value="none">🔓 No Premiere required (Déjà projeté ailleurs, pas d'exclusivité)</option>
+                  <option value="world" selected>🌟 World Premiere (Never screened publicly anywhere worldwide)</option>
+                  <option value="international">🌍 International Premiere (Screened only in country of origin)</option>
+                  <option value="national">National Premiere (Never screened in the festival's host country)</option>
+                  <option value="regional">📍 Regional / State Premiere (Never screened in the region/state)</option>
+                  <option value="none">🔓 No Premiere Required (Already premiered elsewhere, non-exclusive)</option>
                 </select>
                 <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">
-                  Certains festivals majeurs (Cannes, Venise, Clermont-Ferrand, Sundance) exigent strictement une World ou International Premiere.
+                  Top-tier festivals (Cannes, Venice, Sundance, Clermont-Ferrand) strictly require a World or International Premiere.
                 </p>
               </div>
             </div>
 
-            <!-- Disponibilité publique en ligne -->
+            <!-- Online Availability -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
               <div>
                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Current Online Availability</label>
                 <select id="p-online-status" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-bold outline-none">
-                  <option value="private" selected>🔒 Strictement privé (Lien protégé par mot de passe Vimeo/FilmFreeway)</option>
-                  <option value="public">🌐 Public en clair (Accessible sur YouTube, Vimeo public, TikTok...)</option>
+                  <option value="private" selected>🔒 Strictly Private (Password-protected Vimeo or FilmFreeway link)</option>
+                  <option value="public">🌐 Public Streaming (Available publicly on YouTube, Vimeo, TikTok, etc.)</option>
                 </select>
                 <p class="text-[11px] text-rose-600 mt-2 font-medium">
-                  ⚠️ Attention : rendre un film public sur Internet disqualifie d'office 75% des festivals compétitifs.
+                  ⚠️ Warning: Publicly streaming your film online disqualifies it from 75% of competitive festivals.
                 </p>
               </div>
             </div>
 
-            <!-- Historique de sélections & Diffusion commerciale -->
+            <!-- Past Festival Selections & Commercial Distribution -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 md:col-span-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Past Selections & Commercial Distribution</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Past Festival Selections & Commercial Distribution</label>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input type="text" id="p-past-screenings" placeholder="Festivals passés ou récompenses déjà obtenues (optionnel)" class="px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
+                <input type="text" id="p-past-screenings" placeholder="Past festival selections or awards won (optional)" class="px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl outline-none font-medium">
                 <select id="p-commercial-distrib" class="px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-medium outline-none">
-                  <option value="none" selected>Aucune distribution commerciale (TV ou VOD payante)</option>
-                  <option value="tv">Diffusé à la Télévision</option>
-                  <option value="vod">Diffusé en VOD payante</option>
-                  <option value="distributor">Acheté par un distributeur</option>
+                  <option value="none" selected>No commercial distribution (No TV broadcast or paid VOD)</option>
+                  <option value="tv">Broadcast on Television</option>
+                  <option value="vod">Streamed on commercial VOD</option>
+                  <option value="distributor">Acquired by a commercial distributor</option>
                 </select>
               </div>
             </div>
@@ -512,54 +509,54 @@
         </div>
 
         <!-- ============================================ -->
-        <!-- CATEGORY 5: CIBLE & FILTRES FESTIVALS -->
+        <!-- CATEGORY 5: FESTIVAL TARGETS & CONSTRAINTS -->
         <!-- ============================================ -->
         <div id="content-cat5" class="hidden space-y-5 animate-in fade-in duration-150">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             
-            <!-- Frais max USD -->
+            <!-- Maximum Entry Fee -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
               <div class="flex justify-between items-center">
-                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Budget d'inscription max</label>
-                <span id="target-budget-badge" class="px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-xs border border-emerald-200">25 $</span>
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Maximum Entry Fee</label>
+                <span id="target-budget-badge" class="px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-xs border border-emerald-200">$25</span>
               </div>
-              <input type="range" id="p-max-fee" min="0" max="100" step="5" value="25" oninput="document.getElementById('target-budget-badge').innerText = this.value + ' $'" class="w-full accent-emerald-600 cursor-pointer">
+              <input type="range" id="p-max-fee" min="0" max="100" step="5" value="25" oninput="document.getElementById('target-budget-badge').innerText = '$' + this.value" class="w-full accent-emerald-600 cursor-pointer">
               <div class="flex justify-between text-[11px] text-slate-400">
-                <span>0$ (Gratuit)</span>
-                <span>25$</span>
-                <span>50$</span>
-                <span>100$+</span>
+                <span>$0 (Free)</span>
+                <span>$25</span>
+                <span>$50</span>
+                <span>$100+</span>
               </div>
             </div>
 
-            <!-- Inscriptions ouvertes & Deadlines -->
+            <!-- Submission Window -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Période des inscriptions</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Submission Window</label>
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 cursor-pointer">
                 <input type="checkbox" id="p-only-open" checked class="w-4 h-4 rounded text-brand-600">
-                <span>Inscriptions ouvertes uniquement</span>
+                <span>Open Submissions Only</span>
               </label>
-              <p class="text-[11px] text-slate-400">Exclut les festivals dont la date limite est dépassée.</p>
+              <p class="text-[11px] text-slate-400">Excludes festivals whose final submission deadline has passed.</p>
             </div>
 
-            <!-- Type d'événement -->
+            <!-- Event Screening Format -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Type d'Événement</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Event Screening Format</label>
               <div class="space-y-1.5 text-xs">
                 <label class="flex items-center space-x-2 text-[11px] text-slate-700 cursor-pointer">
                   <input type="checkbox" id="type-live" checked class="rounded text-brand-600">
-                  <span>🍿 Live Screening (Projections physiques)</span>
+                  <span>🍿 Live Theatrical Screenings</span>
                 </label>
                 <label class="flex items-center space-x-2 text-[11px] text-slate-700 cursor-pointer">
                   <input type="checkbox" id="type-online" class="rounded text-brand-600">
-                  <span>💻 Online / Virtuel</span>
+                  <span>💻 Online / Virtual Screenings</span>
                 </label>
               </div>
             </div>
 
-            <!-- Accréditations & Labels -->
+            <!-- Recognized Accreditations & Badges -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 lg:col-span-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Accréditations & Labels Reconnus</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Recognized Accreditations & Badges</label>
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                 <label class="flex items-center space-x-1.5 cursor-pointer text-[11px] text-slate-700">
                   <input type="checkbox" id="label-oscar" class="rounded text-brand-600">
@@ -584,47 +581,47 @@
               </div>
             </div>
 
-            <!-- Profondeur du scan -->
+            <!-- Scan Intensity -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Intensité du scan</label>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">DeepSearch Scan Intensity</label>
               <select id="p-search-depth" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-semibold outline-none">
-                <option value="fast">⚡ Rapide (~15 fiches détaillées)</option>
-                <option value="standard" selected>🔍 Approfondie (~30 fiches)</option>
-                <option value="deep">🚀 Exhaustive (~60+ fiches)</option>
+                <option value="fast">⚡ Fast (~15 comprehensive records)</option>
+                <option value="standard" selected>🔍 Balanced (~30 comprehensive records)</option>
+                <option value="deep">🚀 Exhaustive (~60+ records)</option>
               </select>
             </div>
 
-            <!-- Modèle IA Utilisé pour l'Analyse -->
+            <!-- Local AI Model for Decision Support -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 md:col-span-2">
               <div class="flex items-center justify-between">
-                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Modèle IA Utilisé pour l'Analyse</label>
-                <span id="model-selected-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">Recommandé</span>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Local AI Model for Decision Support</label>
+                <span id="model-selected-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">Recommended</span>
               </div>
               <div class="flex items-center space-x-2">
                 <select id="p-selected-model" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl font-bold text-brand-700 outline-none">
-                  <option value="qwen2.5:0.5b">qwen2.5:0.5b (Recommandé Core i3 • 91% exactitude • 35 tok/s)</option>
+                  <option value="qwen2.5:0.5b">qwen2.5:0.5b (Recommended • 91% Accuracy • Fast)</option>
                 </select>
                 <button type="button" onclick="switchNavTab('settings')" class="px-3 py-2 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-100 transition flex-shrink-0 flex items-center space-x-1" title="Manage or pull more models">
                   <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-500"></i>
-                  <span>Gérer</span>
+                  <span>Manage</span>
                 </button>
               </div>
-              <p class="text-[11px] text-slate-400">Le modèle IA tranche les ambiguïtés dans les règlements complexes (exécuté 100% en local).</p>
+              <p class="text-[11px] text-slate-400">Local AI clarifies nuanced rule conflicts and eligibility exceptions (100% local, no cloud fees).</p>
             </div>
 
           </div>
         </div>
 
-        <!-- GROS BOUTON D'ACTION PRINCIPAL -->
+        <!-- MAIN ACTION BUTTON -->
         <div class="pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="text-xs text-slate-500 flex items-center space-x-2">
             <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
-            <span>Contrôle anti-disqualification & respect des 5 critères d'éligibilité</span>
+            <span>Disqualification blocker protection & 5-tier eligibility verification</span>
           </div>
 
           <button type="submit" id="btn-deep-search" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-brand-600 via-indigo-600 to-emerald-600 hover:from-brand-700 hover:to-emerald-700 text-white rounded-2xl font-black text-sm sm:text-base shadow-xl shadow-brand-500/25 transition transform active:scale-95 flex items-center justify-center space-x-2.5">
             <i data-lucide="sparkles" class="w-5 h-5"></i>
-            <span>LANCER LA RECHERCHE APPROFONDIE (5 CRITÈRES)</span>
+            <span>LAUNCH DEEPSEARCH ANALYSIS (5 TIERS)</span>
           </button>
         </div>
 
@@ -634,7 +631,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- SECTION 2: BARRE D'ÉTAT & PROGRESSION EN DIRECT (STABLE) -->
+    <!-- SECTION 2: LIVE PROGRESS & STATUS BAR -->
     <!-- ================================================================= -->
     <section id="section-progress" class="hidden bg-white rounded-3xl border border-slate-200/80 card-shadow p-6 space-y-4">
       <div class="flex items-center justify-between">
@@ -643,8 +640,8 @@
             <i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>
           </div>
           <div>
-            <h3 class="font-bold text-slate-900 text-base" id="prog-title">Recherche approfondie en cours...</h3>
-            <p class="text-xs text-slate-500" id="prog-sub">Exploration et analyse des règlements</p>
+            <h3 class="font-bold text-slate-900 text-base" id="prog-title">DeepSearch analysis running...</h3>
+            <p class="text-xs text-slate-500" id="prog-sub">Scraping rules, deadlines, and checking blockers</p>
           </div>
         </div>
 
@@ -656,9 +653,9 @@
       </div>
 
       <div class="flex items-center justify-between text-xs pt-1">
-        <span id="prog-log-line" class="text-slate-600 font-mono truncate max-w-xl">Initialisation des requêtes...</span>
+        <span id="prog-log-line" class="text-slate-600 font-mono truncate max-w-xl">Initializing criteria matching engine...</span>
         <button type="button" onclick="toggleTerminalLogs()" class="text-brand-600 hover:text-brand-800 font-semibold flex items-center space-x-1">
-          <span id="prog-log-toggle-text">Voir les détails techniques</span>
+          <span id="prog-log-toggle-text">View technical logs</span>
           <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
         </button>
       </div>
@@ -668,7 +665,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- SECTION 3: RAPPORTS & LISTE DES FESTIVALS (100% STABLE) -->
+    <!-- SECTION 3: FESTIVAL RESULTS & REPORTS -->
     <!-- ================================================================= -->
     <section id="section-results" class="space-y-6">
       
@@ -677,7 +674,7 @@
         <div>
           <div class="flex items-center space-x-2 text-brand-300 text-xs font-bold uppercase tracking-wider mb-1">
             <i data-lucide="award" class="w-4 h-4"></i>
-            <span>Résultats & Rapports d'Éligibilité</span>
+            <span>Eligibility Results & Strategic Rankings</span>
           </div>
           <h2 id="results-headline" class="text-xl sm:text-2xl font-black tracking-tight">
             Matched & Ranked Festivals
@@ -691,7 +688,7 @@
         <div class="flex flex-wrap items-center gap-2.5">
           <button onclick="openSaveAnalysisModal()" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-brand-500/30 transition transform active:scale-95" title="Save current analysis session to reload anytime">
             <i data-lucide="bookmark-plus" class="w-4 h-4"></i>
-            <span>Save Analysis Session</span>
+            <span>Save Session</span>
           </button>
 
           <button onclick="exportData('excel')" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-emerald-600/30 transition transform active:scale-95" title="Download filtered festivals as Excel spreadsheet">
@@ -699,19 +696,19 @@
             <span>Excel (.xlsx)</span>
           </button>
 
-          <button onclick="exportData('csv')" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Exporter en CSV (respecte les filtres)">
+          <button onclick="exportData('csv')" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Export filtered festivals to CSV">
             <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-300"></i>
             <span>CSV</span>
           </button>
 
-          <button onclick="exportData('json')" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Exporter en JSON structuré (respecte les filtres)">
+          <button onclick="exportData('json')" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Export filtered festivals to JSON">
             <i data-lucide="file-code" class="w-4 h-4 text-indigo-300"></i>
             <span>JSON</span>
           </button>
 
-          <button onclick="window.print()" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Imprimer ou enregistrer en PDF">
+          <button onclick="window.print()" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm" title="Print or Save as PDF">
             <i data-lucide="printer" class="w-4 h-4 text-amber-300"></i>
-            <span>Imprimer</span>
+            <span>Print / PDF</span>
           </button>
         </div>
       </div>
@@ -723,27 +720,27 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div class="relative flex-1">
             <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-            <input type="text" id="filter-search" oninput="debounceFetchFestivals()" placeholder="Rechercher par nom, ville, pays, genres, récompenses ou accréditations..." class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition">
+            <input type="text" id="filter-search" oninput="debounceFetchFestivals()" placeholder="Search by name, city, country, genre, awards, or accreditations..." class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition">
           </div>
 
           <!-- Sorting Selector -->
           <div class="flex items-center space-x-2">
-            <label for="filter-sort" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex-shrink-0">Trier par :</label>
+            <label for="filter-sort" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex-shrink-0">Sort by:</label>
             <select id="filter-sort" onchange="fetchFestivals()" class="bg-slate-50 border border-slate-200 text-slate-800 rounded-2xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-500/20">
-              <option value="score_desc">⭐ Score de Match (% Max)</option>
-              <option value="score_asc">Match Score (Low to High)</option>
-              <option value="deadline_asc">📅 Prochaine Deadline (Plus proche)</option>
-              <option value="fee_asc">💰 Tarif le plus bas ($0 Gratuit)</option>
-              <option value="fee_desc">💰 Tarif le plus élevé</option>
-              <option value="trust_desc">🛡️ Indice de Fiabilité (Trust)</option>
-              <option value="name_asc">🔤 Nom alphabétique (A-Z)</option>
+              <option value="score_desc">⭐ Match Score (Highest first)</option>
+              <option value="score_asc">Match Score (Lowest first)</option>
+              <option value="deadline_asc">📅 Next Deadline (Soonest first)</option>
+              <option value="fee_asc">💰 Entry Fee (Lowest first)</option>
+              <option value="fee_desc">💰 Entry Fee (Highest first)</option>
+              <option value="trust_desc">🛡️ Trust Index (Highest first)</option>
+              <option value="name_asc">🔤 Name (A-Z)</option>
             </select>
 
             <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
-              <button onclick="setViewMode('grid')" id="btn-view-grid" class="p-1.5 rounded-lg bg-white text-slate-900 shadow-sm transition" title="Vue grille de cartes">
+              <button onclick="setViewMode('grid')" id="btn-view-grid" class="p-1.5 rounded-lg bg-white text-slate-900 shadow-sm transition" title="Card grid view">
                 <i data-lucide="layout-grid" class="w-4 h-4"></i>
               </button>
-              <button onclick="setViewMode('table')" id="btn-view-table" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 transition" title="Vue tableau synthétique">
+              <button onclick="setViewMode('table')" id="btn-view-table" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 transition" title="Summary table view">
                 <i data-lucide="list" class="w-4 h-4"></i>
               </button>
             </div>
@@ -779,32 +776,53 @@
 
           <label class="flex items-center space-x-1.5 cursor-pointer bg-amber-50 hover:bg-amber-100 text-amber-900 px-3 py-1.5 rounded-xl border border-amber-200 transition select-none">
             <input type="checkbox" id="filter-saved-only" onchange="fetchFestivals()" class="rounded text-amber-600 focus:ring-amber-500 w-3.5 h-3.5">
-            <span class="font-extrabold text-amber-800">⭐ Mes Watchlist only</span>
+            <span class="font-extrabold text-amber-800">⭐ Watchlist only</span>
           </label>
 
           <!-- Min Score Dropdown -->
           <div class="flex items-center space-x-1 pl-2 border-l border-slate-200">
-            <span class="text-slate-400 text-[11px] font-bold">Score min :</span>
+            <span class="text-slate-400 text-[11px] font-bold">Min score:</span>
             <select id="filter-min-score" onchange="fetchFestivals()" class="bg-slate-50 border border-slate-200 text-slate-700 rounded-xl px-2.5 py-1 text-xs font-semibold outline-none">
-              <option value="0">Tous</option>
-              <option value="50">>= 50%</option>
-              <option value="70">>= 70% (Fort)</option>
-              <option value="85">>= 85% (Idéal)</option>
+              <option value="0">All</option>
+              <option value="50">&gt;= 50%</option>
+              <option value="70">&gt;= 70% (Strong)</option>
+              <option value="85">&gt;= 85% (Ideal)</option>
             </select>
           </div>
 
           <button onclick="resetFilters()" class="ml-auto text-slate-400 hover:text-slate-700 font-semibold text-xs flex items-center space-x-1">
             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-            <span>Reset Form</span>
+            <span>Reset Filters</span>
           </button>
         </div>
 
       </div>
 
+      <!-- Initial Welcome State (Shown when no film is loaded or before first search) -->
+      <div id="festivals-initial" class="hidden bg-white rounded-3xl border border-slate-200/80 card-shadow p-8 sm:p-12 text-center space-y-4">
+        <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto shadow-inner">
+          <i data-lucide="sparkles" class="w-8 h-8"></i>
+        </div>
+        <div class="max-w-xl mx-auto space-y-2">
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Ready for DeepSearch Analysis</h3>
+          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+            Fill in your film project details in the 5 criteria tiers above, then click <strong class="text-brand-600">"Launch DeepSearch Analysis"</strong> to evaluate and rank matching festivals.
+          </p>
+        </div>
+        <div class="pt-2 flex flex-wrap justify-center gap-3">
+          <button onclick="document.getElementById('p-film-title').focus(); window.scrollTo({top: 0, behavior: 'smooth'});" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm shadow-md transition">
+            Configure Film Profile
+          </button>
+          <button onclick="fetchFestivals(true)" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition">
+            Browse All Festivals Database
+          </button>
+        </div>
+      </div>
+
       <!-- Loading state -->
       <div id="festivals-loading" class="hidden py-16 text-center">
         <div class="inline-block w-8 h-8 border-3 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
-        <p class="text-sm text-slate-500 mt-2">Calcul des scores et conformité aux 5 critères...</p>
+        <p class="text-sm text-slate-500 mt-2">Calculating match scores and evaluating 5 criteria tiers...</p>
       </div>
 
       <!-- Empty state -->
@@ -812,9 +830,9 @@
         <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
           <i data-lucide="film" class="w-7 h-7"></i>
         </div>
-        <h3 class="font-bold text-slate-800 text-base">Aucun festival ne correspond à ces critères ou filtres</h3>
+        <h3 class="font-bold text-slate-800 text-base">No festivals match your current criteria or filters</h3>
         <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-          Décocher « Eligible only » vous permettra de visualiser les festivals ayant de légères contraintes bloquantes.
+          Unchecking "Eligible only" allows you to inspect festivals with minor restrictions or blockers.
         </p>
         <button onclick="resetFilters()" class="mt-4 px-4 py-2 text-xs font-bold bg-brand-50 text-brand-700 rounded-xl hover:bg-brand-100 transition">
           Reset Filters
@@ -832,11 +850,11 @@
               <tr>
                 <th class="px-5 py-4">Score</th>
                 <th class="px-5 py-4">Festival</th>
-                <th class="px-5 py-4">Frais Inscription</th>
+                <th class="px-5 py-4">Entry Fee</th>
                 <th class="px-5 py-4">Next Deadline</th>
                 <th class="px-5 py-4">Eligibility</th>
-                <th class="px-5 py-4">Fiabilité</th>
-                <th class="px-5 py-4 text-right">Action</th>
+                <th class="px-5 py-4">Trust Index</th>
+                <th class="px-5 py-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody id="festivals-table-body" class="divide-y divide-slate-100"></tbody>
@@ -851,7 +869,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- VIEW: MES FESTIVALS SAUVEGARDÉS (WATCHLIST) -->
+    <!-- VIEW: BOOKMARKED FESTIVALS (WATCHLIST) -->
     <!-- ================================================================= -->
     <div id="view-bookmarks" class="hidden space-y-8 animate-in fade-in duration-200">
       
@@ -860,13 +878,13 @@
         <div>
           <div class="flex items-center space-x-2 text-amber-400 text-xs font-extrabold uppercase tracking-wider mb-1">
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <span>Feuille de Route & Watchlist</span>
+            <span>Submission Roadmap & Watchlist</span>
           </div>
           <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            Mes Festivals Sauvegardés
+            My Bookmarked Festivals
           </h1>
           <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-            Suivez vos candidatures, modifiez vos statuts de soumission, ajoutez vos mémos personnels et exportez votre liste prioritaire.
+            Track festival submissions, update progression stages, write personal memos, and export your roadmap.
           </p>
         </div>
 
@@ -885,19 +903,19 @@
       <!-- Bookmarks Filter Bar -->
       <div class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200/80 card-shadow flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div class="flex items-center space-x-2">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Statut :</span>
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Status:</span>
           <select id="bfilter-status" onchange="renderBookmarks()" class="bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-3 py-1.5 text-xs font-bold outline-none">
-            <option value="all">Tous les statuts</option>
+            <option value="all">All statuses</option>
             <option value="To Submit">To Submit</option>
             <option value="In Progress">In Progress</option>
-            <option value="Submitted">Soumis</option>
+            <option value="Submitted">Submitted</option>
             <option value="Selected">Selected / Winner</option>
             <option value="Not Selected">Not Selected</option>
           </select>
         </div>
 
         <div class="flex items-center space-x-2 text-xs text-slate-500">
-          <span id="bookmarks-count-tag" class="font-bold text-slate-900">0 festival(s) sauvegardé(s)</span>
+          <span id="bookmarks-count-tag" class="font-bold text-slate-900">0 bookmarked festival(s)</span>
         </div>
       </div>
 
@@ -914,7 +932,7 @@
           Click the star ⭐ on any festival card or table row to bookmark it and track your submissions here.
         </p>
         <button onclick="switchNavTab('search')" class="px-5 py-2.5 text-xs font-bold bg-brand-600 hover:bg-brand-700 text-white rounded-xl shadow-md transition">
-          Explorer les festivals
+          Explore Festivals
         </button>
       </div>
 
@@ -922,7 +940,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- VIEW: HISTORIQUE DES ANALYSES & SESSIONS -->
+    <!-- VIEW: ANALYSIS HISTORY & SAVED SESSIONS -->
     <!-- ================================================================= -->
     <div id="view-analyses" class="hidden space-y-8 animate-in fade-in duration-200">
       
@@ -931,10 +949,10 @@
         <div>
           <div class="flex items-center space-x-2 text-brand-300 text-xs font-extrabold uppercase tracking-wider mb-1">
             <i data-lucide="history" class="w-4 h-4"></i>
-            <span>Gestionnaire de Sessions & Archives</span>
+            <span>Session Archives & History</span>
           </div>
           <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            Historique des Analyses Sauvegardées
+            Saved Analysis Sessions
           </h1>
           <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
             Instantly reopen previous analysis sessions without scraping or computing. You can also save the current session or import a JSON backup.
@@ -944,12 +962,12 @@
         <div class="flex flex-wrap items-center gap-2.5">
           <button onclick="openSaveAnalysisModal()" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-brand-500/30 transition transform active:scale-95">
             <i data-lucide="bookmark-plus" class="w-4 h-4"></i>
-            <span>Save Session en cours</span>
+            <span>Save Current Session</span>
           </button>
           
           <button onclick="document.getElementById('import-session-file').click()" class="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/15 transition backdrop-blur-sm">
             <i data-lucide="upload" class="w-4 h-4 text-emerald-300"></i>
-            <span>Importer Session (.json)</span>
+            <span>Import Session (.json)</span>
           </button>
           <input type="file" id="import-session-file" accept=".json" onchange="handleImportSessionFile(event)" class="hidden">
         </div>
@@ -963,12 +981,12 @@
         <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-brand-600 flex items-center justify-center mx-auto">
           <i data-lucide="folder-clock" class="w-7 h-7"></i>
         </div>
-        <h3 class="font-bold text-slate-800 text-base">Aucune analyse archivée pour le moment</h3>
+        <h3 class="font-bold text-slate-800 text-base">No saved sessions yet</h3>
         <p class="text-xs text-slate-500 max-w-sm mx-auto">
-          Sauvegardez vos recherches pour pouvoir les réouvrir plus tard en 1 clic sans devoir relancer un scrape ou une analyse IA.
+          Save your analysis sessions to instantly restore and inspect them anytime without re-scraping or re-running AI models.
         </p>
         <button onclick="openSaveAnalysisModal()" class="px-5 py-2.5 text-xs font-bold bg-brand-600 hover:bg-brand-700 text-white rounded-xl shadow-md transition">
-          Save Session actuelle
+          Save Current Session
         </button>
       </div>
 
@@ -976,7 +994,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- VIEW 2: PARAMÈTRES SYSTÈME & GESTIONNAIRE DES MODÈLES IA -->
+    <!-- VIEW 2: SYSTEM SETTINGS & LOCAL AI MANAGER -->
     <!-- ================================================================= -->
     <div id="view-settings" class="hidden space-y-8">
 
@@ -986,24 +1004,24 @@
           <div>
             <div class="flex items-center space-x-2 text-brand-600 font-bold text-xs uppercase tracking-wider mb-1">
               <i data-lucide="cpu" class="w-4 h-4"></i>
-              <span>Gestionnaire IA & Diagnostic Matériel</span>
+              <span>Hardware Diagnostic & Local AI Manager</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-              Paramètres & Modèles d'Intelligence Artificielle
+              Settings & Local AI Models
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-3xl">
-              Gérez les modèles de langage locaux exécutés sur votre PC via Ollama. Téléchargez, supprimez ou activez les modèles calibrés pour vos 8 Go de RAM et votre processeur Intel Core i3.
+              Manage local language models running privately on your PC via Ollama. Download, switch, or remove models calibrated for your CPU and system RAM.
             </p>
           </div>
 
           <div class="flex items-center space-x-2.5">
             <button onclick="unloadModels()" class="flex items-center space-x-1.5 px-4 py-2.5 text-xs font-bold rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 shadow-sm transition">
               <i data-lucide="zap" class="w-4 h-4 text-amber-600"></i>
-              <span>Libérer la RAM IA</span>
+              <span>Free AI RAM</span>
             </button>
             <button onclick="loadModelsData()" class="flex items-center space-x-1.5 px-4 py-2.5 text-xs font-bold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
               <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-              <span>Actualiser</span>
+              <span>Refresh</span>
             </button>
           </div>
         </div>
@@ -1017,24 +1035,24 @@
               <i data-lucide="cpu" class="w-5 h-5"></i>
             </div>
             <div class="overflow-hidden">
-              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Processeur Détecté</div>
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Detected Processor</div>
               <div id="sys-cpu-name" class="font-extrabold text-sm text-slate-900 truncate">Intel Core i3-1005G1</div>
-              <div class="text-[11px] text-slate-500">2 Cœurs / 4 Threads • Éco-énergie</div>
+              <div class="text-[11px] text-slate-500">2 Cores / 4 Threads • Power Efficient</div>
             </div>
           </div>
 
           <!-- RAM Gauge Card -->
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Mémoire RAM Système</span>
-              <span id="sys-ram-badge" class="font-bold text-xs text-brand-700">-- Go libre</span>
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">System RAM Memory</span>
+              <span id="sys-ram-badge" class="font-bold text-xs text-brand-700">-- GB free</span>
             </div>
             <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
               <div id="sys-ram-bar" class="bg-gradient-to-r from-emerald-500 via-brand-500 to-rose-500 h-2.5 rounded-full transition-all duration-500 w-1/2"></div>
             </div>
             <div class="flex justify-between text-[11px] text-slate-500 font-mono">
-              <span id="sys-ram-used">Utilisé: --%</span>
-              <span id="sys-ram-total">Total: 8.0 Go</span>
+              <span id="sys-ram-used">Used: --%</span>
+              <span id="sys-ram-total">Total: 8.0 GB</span>
             </div>
           </div>
 
@@ -1045,13 +1063,13 @@
                 <i data-lucide="server" class="w-5 h-5"></i>
               </div>
               <div>
-                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Serveur Ollama Local</div>
-                <div id="sys-ollama-status-text" class="font-extrabold text-sm text-emerald-700">En ligne (Port 11434)</div>
-                <div id="sys-ollama-ver" class="text-[11px] text-slate-500">Version connectée</div>
+                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Local Ollama Server</div>
+                <div id="sys-ollama-status-text" class="font-extrabold text-sm text-emerald-700">Online (Port 11434)</div>
+                <div id="sys-ollama-ver" class="text-[11px] text-slate-500">Connected and responsive</div>
               </div>
             </div>
             <button id="btn-start-daemon" onclick="startOllamaDaemon()" class="hidden px-3 py-1.5 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 shadow-sm transition">
-              Démarrer
+              Start Daemon
             </button>
           </div>
 
@@ -1068,9 +1086,9 @@
             </div>
             <div>
               <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">
-                Téléchargement du modèle <span id="pull-model-name" class="text-brand-600 font-mono">qwen2.5:0.5b</span>...
+                Downloading model <span id="pull-model-name" class="text-brand-600 font-mono">qwen2.5:0.5b</span>...
               </h4>
-              <p id="pull-model-status" class="text-xs text-slate-500">Connexion aux serveurs Ollama...</p>
+              <p id="pull-model-status" class="text-xs text-slate-500">Connecting to Ollama registry...</p>
             </div>
           </div>
           <span id="pull-model-pct" class="text-lg font-black text-brand-600 font-mono">0%</span>
@@ -1081,8 +1099,8 @@
         </div>
 
         <div class="flex items-center justify-between text-[11px] text-slate-500 font-mono">
-          <span id="pull-model-bytes">0 Mo / 0 Mo</span>
-          <span>Le téléchargement s'exécute en tâche de fond</span>
+          <span id="pull-model-bytes">0 MB / 0 MB</span>
+          <span>Download is running asynchronously in background</span>
         </div>
       </div>
 
@@ -1091,10 +1109,10 @@
         <div>
           <div class="flex items-center space-x-2 text-brand-600 font-bold text-xs uppercase tracking-wider mb-1">
             <i data-lucide="layers" class="w-4 h-4"></i>
-            <span>Bibliothèque Prise en Charge</span>
+            <span>Curated Model Library</span>
           </div>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-            Modèles d'IA Locaux Calibrés pour votre Ordinateur
+            Local AI Models Calibrated for Your PC
           </h2>
           <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-3xl">
             These models run efficiently on local CPU / RAM. Click Download or Delete to manage your local AI environment.
@@ -1112,11 +1130,11 @@
         <div class="border-b border-slate-100 pb-4">
           <div class="flex items-center space-x-2 text-brand-600 font-bold text-xs uppercase tracking-wider mb-1">
             <i data-lucide="download-cloud" class="w-4 h-4"></i>
-            <span>Modèle Personnalisé</span>
+            <span>Custom Model</span>
           </div>
           <h3 class="text-lg font-extrabold text-slate-900">Pull another model from Ollama library</h3>
           <p class="text-xs text-slate-500 mt-0.5">
-            Vous pouvez saisir n'importe quel identifiant de modèle disponible sur <a href="https://ollama.com/library" target="_blank" class="text-brand-600 underline font-semibold">ollama.com/library</a> (ex: <code>gemma2:2b</code>, <code>phi3:mini</code>, <code>tinyllama</code>, etc.).
+            You can enter any model identifier from <a href="https://ollama.com/library" target="_blank" class="text-brand-600 underline font-semibold">ollama.com/library</a> (e.g., <code>gemma2:2b</code>, <code>phi3:mini</code>, <code>tinyllama</code>, etc.).
           </p>
         </div>
 
@@ -1145,31 +1163,31 @@
           <div class="flex flex-wrap items-center gap-2">
             <span id="m-badge-score" class="px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center space-x-1 shadow-sm">
               <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-              <span id="m-score-text">95% Match Idéal</span>
+              <span id="m-score-text">95% Match Score</span>
             </span>
-            <span id="m-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 text-slate-700">Ouvert</span>
+            <span id="m-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 text-slate-700">Open</span>
             <span id="m-years" class="text-xs text-slate-500 font-medium"></span>
             
             <!-- Quick Bookmark Star in Header -->
-            <button id="m-star-btn" onclick="toggleModalBookmark()" class="ml-1 p-1 rounded-lg text-slate-400 hover:text-amber-500 transition flex items-center space-x-1" title="Ajouter / Retirer des favoris">
+            <button id="m-star-btn" onclick="toggleModalBookmark()" class="ml-1 p-1 rounded-lg text-slate-400 hover:text-amber-500 transition flex items-center space-x-1" title="Add / Remove from Watchlist">
               <i id="m-star-icon" data-lucide="star" class="w-4 h-4"></i>
               <span id="m-star-text" class="text-[11px] font-bold text-slate-600">Watchlist</span>
             </button>
           </div>
 
-          <h2 id="m-title" class="text-xl sm:text-2xl font-black text-slate-900 truncate">Nom du Festival</h2>
+          <h2 id="m-title" class="text-xl sm:text-2xl font-black text-slate-900 truncate">Festival Name</h2>
           
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500 font-medium">
             <div id="m-location" class="flex items-center space-x-1.5">
               <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
-              <span>Localisation non renseignée</span>
+              <span>Location not specified</span>
             </div>
             <div id="m-accreditations-badges" class="flex items-center space-x-1"></div>
           </div>
         </div>
 
         <div class="flex items-center space-x-2 flex-shrink-0">
-          <a id="m-external-link" href="#" target="_blank" class="p-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition shadow-sm" title="Ouvrir sur FilmFreeway">
+          <a id="m-external-link" href="#" target="_blank" class="p-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition shadow-sm" title="Open on FilmFreeway">
             <i data-lucide="external-link" class="w-4 h-4"></i>
           </a>
           <button onclick="closeModal()" class="p-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition shadow-sm" title="Close">
@@ -1181,7 +1199,7 @@
       <!-- Quick Metrics Ribbon -->
       <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-100 border-b border-slate-100 bg-white text-center py-3">
         <div class="px-2">
-          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Frais Minimum</div>
+          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Minimum Fee</div>
           <div id="m-min-fee" class="text-base sm:text-lg font-extrabold text-slate-900">—</div>
         </div>
         <div class="px-2">
@@ -1189,11 +1207,11 @@
           <div id="m-next-deadline" class="text-xs sm:text-sm font-extrabold text-brand-600 mt-0.5">—</div>
         </div>
         <div class="px-2">
-          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Indice de Fiabilité</div>
+          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Trust Score</div>
           <div id="m-trust-score" class="text-base sm:text-lg font-extrabold text-emerald-600">—</div>
         </div>
         <div class="px-2">
-          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Catégories Conseillées</div>
+          <div class="text-[10px] sm:text-[11px] text-slate-400 uppercase font-bold tracking-wider">Recommended Categories</div>
           <div id="m-rec-cat-count" class="text-base sm:text-lg font-extrabold text-indigo-600">—</div>
         </div>
       </div>
@@ -1202,7 +1220,7 @@
       <div id="m-blocker-box" class="hidden px-6 py-3 bg-rose-50 border-b border-rose-200 text-xs">
         <div class="font-extrabold text-rose-900 flex items-center space-x-1.5 mb-1">
           <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-600"></i>
-          <span>Critère(s) bloquant(s) d'incompatibilité avec votre film :</span>
+          <span>Disqualifying criteria / Incompatibilities with your film:</span>
         </div>
         <div id="m-blocker-list" class="space-y-1 text-rose-800 font-semibold pl-6"></div>
       </div>
@@ -1276,7 +1294,7 @@
         <!-- TAB 3: REQUIREMENTS & RÈGLEMENT -->
         <div id="mtab-content-requirements" class="hidden space-y-4 text-xs">
           <div>
-            <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2">Table Comparatif des Requirements</h4>
+            <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2">Requirements Comparison Table</h4>
             <div id="m-requirements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
           </div>
 
@@ -1324,14 +1342,14 @@
           <select id="m-footer-status" class="bg-white border border-slate-200 text-slate-800 rounded-xl px-2.5 py-2 font-bold outline-none">
             <option value="To Submit">To Submit</option>
             <option value="In Progress">In Progress</option>
-            <option value="Submitted">Soumis</option>
+            <option value="Submitted">Submitted</option>
             <option value="Selected">Selected</option>
             <option value="Not Selected">Not Selected</option>
           </select>
 
           <input type="text" id="m-footer-note" placeholder="Personal note (memo)..." class="flex-1 sm:w-48 px-3 py-2 bg-white border border-slate-200 rounded-xl outline-none font-medium">
 
-          <button onclick="saveModalBookmarkDetails()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold transition flex items-center space-x-1 shadow-sm" title="Save Session le statut et le mémo">
+          <button onclick="saveModalBookmarkDetails()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold transition flex items-center space-x-1 shadow-sm" title="Save status and memo">
             <i data-lucide="save" class="w-3.5 h-3.5"></i>
             <span>Save</span>
           </button>
@@ -1409,8 +1427,14 @@
 
     window.addEventListener('DOMContentLoaded', async () => {
       lucide.createIcons();
-      await loadProfile();
-      await fetchFestivals();
+      const p = await loadProfile();
+      if (p && p.film_title && p.film_title.trim().length > 0) {
+        await fetchFestivals();
+      } else {
+        document.getElementById('festivals-initial')?.classList.remove('hidden');
+        document.getElementById('festivals-grid')?.classList.add('hidden');
+        document.getElementById('festivals-table-container')?.classList.add('hidden');
+      }
       loadModelsData();
       startPollingTask();
       updateNavBadges();
@@ -1441,17 +1465,17 @@
       const num = parseInt(val, 10) || 0;
       const tag = document.getElementById('runtime-category-tag');
       if (num <= 3) {
-        tag.innerText = "Micro-court (1 à 3 min)";
+        tag.innerText = "Micro-short (1 to 3 min)";
       } else if (num <= 15) {
-        tag.innerText = "Court standard (3 à 15 min)";
+        tag.innerText = "Standard short (3 to 15 min)";
       } else if (num <= 30) {
-        tag.innerText = "Court standard (15 à 30 min)";
+        tag.innerText = "Standard short (15 to 30 min)";
       } else if (num <= 45) {
-        tag.innerText = "Court métrage (30 à 45 min)";
+        tag.innerText = "Short film (30 to 45 min)";
       } else if (num <= 60) {
-        tag.innerText = "Moyen-métrage (40 à 60 min)";
+        tag.innerText = "Medium-length film (40 to 60 min)";
       } else {
-        tag.innerText = "Long-métrage (> 60 min)";
+        tag.innerText = "Feature film (> 60 min)";
       }
     }
 
@@ -1461,7 +1485,7 @@
         const res = await fetch('/api/profile');
         const p = await res.json();
 
-        // 1. Equipe
+        // 1. Team
         if (p.director_age_group) document.getElementById('p-director-age').value = p.director_age_group;
         document.getElementById('p-is-student').checked = !!p.is_student;
         if (p.school_name) document.getElementById('p-school-name').value = p.school_name;
@@ -1477,7 +1501,7 @@
         }
         if (p.credited_roles) document.getElementById('p-credited-roles').value = p.credited_roles;
 
-        // 2. Fiche Technique
+        // 2. Specifications
         if (p.film_title) document.getElementById('p-film-title').value = p.film_title;
         if (p.runtime_minutes) {
           document.getElementById('p-runtime-minutes').value = p.runtime_minutes;
@@ -1494,24 +1518,26 @@
         if (p.aspect_ratio) document.getElementById('p-aspect-ratio').value = p.aspect_ratio;
         if (p.capture_format) document.getElementById('p-capture-format').value = p.capture_format;
 
-        // 3. IA
+        // 3. AI
         const aiRadio = document.querySelector(`input[name="p-ai-level"][value="${p.ai_integration_level || 'none'}"]`);
         if (aiRadio) aiRadio.checked = true;
         document.getElementById('p-ai-disclosure').checked = !!p.has_ai_disclosure;
 
-        // 4. Diffusion & Droits
+        // 4. Rights & Distribution
         if (p.premiere_status_available) document.getElementById('p-premiere-avail').value = p.premiere_status_available;
         if (p.online_availability) document.getElementById('p-online-status').value = p.online_availability;
         if (p.past_screenings_awards) document.getElementById('p-past-screenings').value = p.past_screenings_awards;
         if (p.commercial_distribution) document.getElementById('p-commercial-distrib').value = p.commercial_distribution;
 
-        // 5. Cible & Filtres
+        // 5. Target & Constraints
         if (p.max_fee_usd !== undefined) {
           document.getElementById('p-max-fee').value = p.max_fee_usd;
           document.getElementById('target-budget-badge').innerText = `${p.max_fee_usd} $`;
         }
+        return p;
       } catch (e) {
         console.error("Profile load err:", e);
+        return null;
       }
     }
 
@@ -1538,7 +1564,7 @@
       if (document.getElementById('label-ffa').checked) accreditations.push('film_festival_alliance');
 
       const payload = {
-        // 1. Equipe
+        // 1. Team
         director_age_group: document.getElementById('p-director-age').value,
         is_student: document.getElementById('p-is-student').checked,
         school_name: document.getElementById('p-school-name').value.trim() || null,
@@ -1549,8 +1575,8 @@
         demographics: demographics,
         credited_roles: document.getElementById('p-credited-roles').value,
 
-        // 2. Fiche Technique
-        film_title: document.getElementById('p-film-title').value.trim() || "Mon Court Métrage",
+        // 2. Specifications
+        film_title: document.getElementById('p-film-title').value.trim() || "My Short Film",
         runtime_minutes: parseInt(document.getElementById('p-runtime-minutes').value, 10) || 15,
         project_type: document.getElementById('p-project-type').value,
         genres: ["Short", document.getElementById('p-project-type').value],
@@ -1565,17 +1591,17 @@
         aspect_ratio: document.getElementById('p-aspect-ratio').value,
         capture_format: document.getElementById('p-capture-format').value,
 
-        // 3. IA
+        // 3. AI
         ai_integration_level: aiLevel,
         has_ai_disclosure: document.getElementById('p-ai-disclosure').checked,
 
-        // 4. Diffusion
+        // 4. Rights & Distribution
         premiere_status_available: document.getElementById('p-premiere-avail').value,
         online_availability: document.getElementById('p-online-status').value,
         past_screenings_awards: document.getElementById('p-past-screenings').value.trim() || null,
         commercial_distribution: document.getElementById('p-commercial-distrib').value,
 
-        // 5. Cible & Scan
+        // 5. Target & Constraints
         max_fee_usd: parseFloat(document.getElementById('p-max-fee').value),
         deadline_not_before: document.getElementById('p-only-open').checked ? new Date().toISOString().split('T')[0] : null,
         target_accreditations: accreditations,
@@ -1596,15 +1622,15 @@
         });
 
         if (res.ok) {
-          showToast("Recherche approfondie démarrée !");
+          showToast("DeepSearch analysis started!");
           document.getElementById('section-progress').classList.remove('hidden');
           document.getElementById('section-progress').scrollIntoView({ behavior: 'smooth' });
         } else {
           const err = await res.json();
-          showToast(err.detail || "Erreur lancement", true);
+          showToast(err.detail || "Error starting search", true);
         }
       } catch (err) {
-        showToast("Erreur de connexion", true);
+        showToast("Connection error", true);
       }
     }
 
@@ -1625,7 +1651,7 @@
             btn.classList.add('opacity-60', 'pointer-events-none');
             progSec.classList.remove('hidden');
 
-            document.getElementById('prog-title').innerText = "Analyse approfondie en cours sur FilmFreeway...";
+            document.getElementById('prog-title').innerText = "DeepSearch analysis running on FilmFreeway...";
             document.getElementById('prog-sub').innerText = data.message;
             document.getElementById('prog-pct').innerText = `${data.progress}%`;
             document.getElementById('prog-bar').style.width = `${data.progress}%`;
@@ -1645,7 +1671,7 @@
             // Trigger fetchFestivals ONLY ONCE when transition from running to finished!
             if (isTaskCurrentlyRunning) {
               isTaskCurrentlyRunning = false;
-              document.getElementById('prog-title').innerText = "✓ Recherche approfondie terminée !";
+              document.getElementById('prog-title').innerText = "✓ DeepSearch analysis completed!";
               document.getElementById('prog-sub').innerText = data.message;
               document.getElementById('prog-pct').innerText = "100%";
               document.getElementById('prog-bar').style.width = "100%";
@@ -1664,10 +1690,10 @@
       const txt = document.getElementById('prog-log-toggle-text');
       if (term.classList.contains('hidden')) {
         term.classList.remove('hidden');
-        txt.innerText = "Masquer les détails";
+        txt.innerText = "Hide technical details";
       } else {
         term.classList.add('hidden');
-        txt.innerText = "Voir les détails techniques";
+        txt.innerText = "View technical details";
       }
     }
 
@@ -1715,7 +1741,7 @@
       document.body.removeChild(link);
 
       const targetLabel = isBookmarksOnly ? "your Watchlist" : "the filtered selection";
-      showToast(`Export ${format.toUpperCase()} de ${targetLabel} lancé !`);
+      showToast(`${format.toUpperCase()} export of ${targetLabel} downloaded!`);
     }
 
     // Update Top Navigation Badges (Favoris & Analyses)
@@ -1743,7 +1769,8 @@
     }
 
     // Fetch & Render Main Festivals List
-    async function fetchFestivals() {
+    async function fetchFestivals(forceBrowseAll = false) {
+      document.getElementById('festivals-initial')?.classList.add('hidden');
       document.getElementById('festivals-loading')?.classList.remove('hidden');
       document.getElementById('festivals-grid')?.classList.add('hidden');
       document.getElementById('festivals-table-container')?.classList.add('hidden');
@@ -1762,7 +1789,7 @@
         const hl = document.getElementById('results-headline');
         if (hl) hl.innerText = `Matched Festivals for "${filmTitle}"`;
         const cnt = document.getElementById('results-count-text');
-        if (cnt) cnt.innerText = `${list.length} festival(s) répertorié(s) selon vos filtres (${data.total || list.length} au total).`;
+        if (cnt) cnt.innerText = `${list.length} festival(s) matching your criteria (${data.total || list.length} total).`;
 
         updateNavBadges();
 
@@ -1781,7 +1808,7 @@
       } catch (err) {
         console.error("Fetch err:", err);
         document.getElementById('festivals-loading')?.classList.add('hidden');
-        showToast("Erreur lors de la récupération des festivals", true);
+        showToast("Error retrieving festivals", true);
       }
     }
 
@@ -1806,15 +1833,15 @@
           scoreIcon = 'check-circle';
         }
 
-        const feeDisplay = f.min_fee_usd !== null ? `$${f.min_fee_usd.toFixed(2)}` : 'Gratuit / Inconnu';
+        const feeDisplay = f.min_fee_usd !== null ? `$${f.min_fee_usd.toFixed(2)}` : 'Free / Unknown';
         const feeBadge = f.fee_within_budget 
           ? `<span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center space-x-1"><i data-lucide="wallet" class="w-3 h-3"></i><span>${feeDisplay}</span></span>`
-          : `<span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 line-through" title="Dépasse votre budget">${feeDisplay}</span>`;
+          : `<span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 line-through" title="Exceeds your budget">${feeDisplay}</span>`;
 
-        const deadlineText = f.next_deadline_date ? `Deadline : ${f.next_deadline_date}` : (f.has_upcoming_deadline ? 'Inscriptions ouvertes' : 'Clôturé');
+        const deadlineText = f.next_deadline_date ? `Deadline: ${f.next_deadline_date}` : (f.has_upcoming_deadline ? 'Open' : 'Closed');
         const deadlineBadge = f.has_upcoming_deadline
           ? `<span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 text-brand-700 border border-indigo-200 flex items-center space-x-1"><i data-lucide="calendar" class="w-3 h-3"></i><span>${deadlineText}</span></span>`
-          : `<span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-500 border border-slate-200">Clôturé</span>`;
+          : `<span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-500 border border-slate-200">Closed</span>`;
 
         // Blocker alert on card if not eligible
         let blockerHTML = '';
@@ -1833,7 +1860,7 @@
           bestCatHTML = `
             <div class="flex items-center space-x-1 text-[11px] font-bold text-indigo-700 bg-indigo-50/80 border border-indigo-200/60 px-2.5 py-1 rounded-lg truncate">
               <i data-lucide="tag" class="w-3 h-3 flex-shrink-0"></i>
-              <span class="truncate">Catégorie cible : ${escapeHtml(f.recommended_category)}</span>
+              <span class="truncate">Target Category: ${escapeHtml(f.recommended_category)}</span>
             </div>
           `;
         }
@@ -1844,7 +1871,7 @@
             <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
             <span class="truncate">${escapeHtml(r)}</span>
           </div>
-        `).join('') || '<div class="text-[11px] text-slate-400 italic">Conforme aux critères standards</div>';
+        `).join('') || '<div class="text-[11px] text-slate-400 italic">Compliant with standard criteria</div>';
 
         // Accreditations badges
         const accreditationsBadges = (f.accreditations || []).map(a => `
@@ -1855,14 +1882,14 @@
         const liveBadge = f.is_live_screening ? `
           <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200 flex items-center space-x-1">
             <i data-lucide="projector" class="w-2.5 h-2.5"></i>
-            <span>Projection Salle</span>
+            <span>Theatrical Screening</span>
           </span>
         ` : '';
 
         // Submission status badge if bookmarked
         let savedStatusBadge = '';
         if (isSaved) {
-          savedStatusBadge = `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">⭐ ${escapeHtml(f.submission_status || 'Sauvegardé')}</span>`;
+          savedStatusBadge = `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">⭐ ${escapeHtml(f.submission_status || 'Saved')}</span>`;
         }
 
         grid.innerHTML += `
@@ -1897,7 +1924,7 @@
               <!-- Location & Accreditations -->
               <div class="flex items-center space-x-1 text-xs text-slate-400 mt-1">
                 <i data-lucide="map-pin" class="w-3 h-3 flex-shrink-0"></i>
-                <span class="truncate">${escapeHtml(f.location || 'Localisation non renseignée')}</span>
+                <span class="truncate">${escapeHtml(f.location || 'Location not specified')}</span>
               </div>
 
               <div class="flex flex-wrap gap-1.5 mt-2">
@@ -1928,7 +1955,7 @@
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
               <span class="text-[11px] text-slate-400 font-medium">${escapeHtml(f.years_running || '')}</span>
               <button onclick="openModal('${f.slug}')" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 transition flex items-center space-x-1">
-                <span>Dossier complet</span>
+                <span>Full Dossier</span>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -1949,7 +1976,7 @@
         const isEligible = f.is_eligible !== false;
         const isSaved = !!f.is_saved;
         const scoreColor = !isEligible ? 'text-rose-600 font-extrabold' : (pct >= 80 ? 'text-emerald-600 font-extrabold' : 'text-slate-800 font-bold');
-        const feeDisplay = f.min_fee_usd !== null ? `$${f.min_fee_usd.toFixed(2)}` : 'Inconnu';
+        const feeDisplay = f.min_fee_usd !== null ? `$${f.min_fee_usd.toFixed(2)}` : 'Unknown';
         const feeClass = f.fee_within_budget ? 'text-emerald-700 font-bold' : 'text-rose-600 line-through';
 
         tbody.innerHTML += `
@@ -1964,19 +1991,19 @@
             </td>
             <td class="px-5 py-4 font-bold text-slate-900 max-w-xs truncate cursor-pointer hover:text-brand-600" onclick="openModal('${f.slug}')">
               ${escapeHtml(f.name || f.slug)}
-              <div class="text-[11px] text-slate-400 font-normal truncate">${escapeHtml(f.location || '')}</div>
+              <div class="text-[11px] text-slate-400 font-normal truncate">${escapeHtml(f.location || 'Location not specified')}</div>
             </td>
             <td class="px-4 py-4 text-xs ${feeClass} whitespace-nowrap">${feeDisplay}</td>
-            <td class="px-4 py-4 text-xs font-medium text-slate-700 whitespace-nowrap">${f.next_deadline_date || (f.has_upcoming_deadline ? 'Ouvert' : 'Clôturé')}</td>
+            <td class="px-4 py-4 text-xs font-medium text-slate-700 whitespace-nowrap">${f.next_deadline_date || (f.has_upcoming_deadline ? 'Open' : 'Closed')}</td>
             <td class="px-4 py-4 text-xs whitespace-nowrap">
               <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${isEligible ? 'bg-emerald-50 text-emerald-800' : 'bg-rose-50 text-rose-800'}">
-                ${isEligible ? 'Éligible' : 'Inéligible'}
+                ${isEligible ? 'Eligible' : 'Ineligible'}
               </span>
             </td>
             <td class="px-4 py-4 text-xs font-bold text-slate-700 whitespace-nowrap">${Math.round((f.trust_score || 0)*100)}%</td>
             <td class="px-4 py-4 text-right whitespace-nowrap">
               <button onclick="openModal('${f.slug}')" class="px-3 py-1.5 text-xs font-bold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 rounded-xl transition">
-                Détails
+                Details
               </button>
             </td>
           </tr>
@@ -2004,7 +2031,7 @@
             if (fest) fest.is_saved = false;
             if (currentModalData) currentModalData.is_saved = false;
             updateFestivalBookmarkElements(slug, false);
-            showToast("Festival retiré de vos favoris");
+            showToast("Festival removed from Watchlist");
           }
         } else {
           const res = await fetch(`/api/bookmarks/${encodeURIComponent(slug)}`, {
@@ -2022,7 +2049,7 @@
               currentModalData.submission_status = 'To Submit';
             }
             updateFestivalBookmarkElements(slug, true);
-            showToast("⭐ Festival ajouté à vos favoris !");
+            showToast("⭐ Festival added to Watchlist!");
           }
         }
 
@@ -2034,7 +2061,7 @@
           loadBookmarksView();
         }
       } catch (e) {
-        showToast("Erreur lors de la mise à jour des favoris", true);
+        showToast("Error updating Watchlist", true);
       }
     }
 
@@ -2055,7 +2082,7 @@
           starIcon.className = `w-4 h-4 ${isSaved ? 'text-amber-500 fill-amber-400' : 'text-slate-400'}`;
         }
         if (starText) {
-          starText.innerText = isSaved ? 'Dans mes Favoris' : 'Favori';
+          starText.innerText = isSaved ? 'In Watchlist' : 'Watchlist';
         }
       }
       lucide.createIcons();
@@ -2074,7 +2101,7 @@
           body: JSON.stringify({ submission_status: status, notes: notes })
         });
         if (res.ok) {
-          showToast("Dossier de suivi sauvegardé !");
+          showToast("Watchlist tracking memo saved!");
           const fest = festivals.find(f => f.slug === currentModalSlug);
           if (fest) {
             fest.is_saved = true;
@@ -2089,10 +2116,10 @@
           updateFestivalBookmarkElements(currentModalSlug, true);
           updateNavBadges();
         } else {
-          showToast("Erreur de sauvegarde", true);
+          showToast("Error saving memo", true);
         }
       } catch (e) {
-        showToast("Erreur réseau", true);
+        showToast("Network error", true);
       }
     }
 
@@ -2101,7 +2128,7 @@
       currentModalSlug = slug;
       try {
         const res = await fetch(`/api/festivals/${encodeURIComponent(slug)}`);
-        if (!res.ok) throw new Error("Festival non trouvé");
+        if (!res.ok) throw new Error("Festival not found");
         const data = await res.json();
         currentModalData = data;
         const d = data.detail || {};
@@ -2110,7 +2137,7 @@
 
         // Top Header
         document.getElementById('m-title').innerText = data.name || slug;
-        document.getElementById('m-location').querySelector('span').innerText = data.listing_location || d.location || 'Localisation non renseignée';
+        document.getElementById('m-location').querySelector('span').innerText = data.listing_location || d.location || 'Location not specified';
         document.getElementById('m-years').innerText = data.listing_years_running || d.years_running || '';
         document.getElementById('m-external-link').href = data.url;
         document.getElementById('m-submit-btn').href = data.url;
@@ -2124,15 +2151,15 @@
         // Match Score Badge
         const pct = match.match_pct !== undefined ? match.match_pct : Math.round((match.score || 0) * 100);
         document.getElementById('m-score-text').innerText = `${pct}% • ${match.match_quality || 'Match'}`;
-        document.getElementById('m-status-badge').innerText = data.listing_status || d.status || 'Statut Inconnu';
+        document.getElementById('m-status-badge').innerText = data.listing_status || d.status || 'Status Unknown';
 
         // Star Bookmark in Header
         const isSaved = !!data.is_saved;
         updateFestivalBookmarkElements(slug, isSaved);
 
         // Quick Metrics Ribbon
-        document.getElementById('m-min-fee').innerText = match.min_fee_usd !== null ? `$${match.min_fee_usd.toFixed(2)}` : 'Gratuit / Inconnu';
-        document.getElementById('m-next-deadline').innerText = match.next_deadline_date || (match.has_upcoming_deadline ? 'Inscriptions ouvertes' : 'Clôturé');
+        document.getElementById('m-min-fee').innerText = match.min_fee_usd !== null ? `$${match.min_fee_usd.toFixed(2)}` : 'Free / Unknown';
+        document.getElementById('m-next-deadline').innerText = match.next_deadline_date || (match.has_upcoming_deadline ? 'Open' : 'Closed');
         document.getElementById('m-trust-score').innerText = `${Math.round((match.trust_score || 0) * 100)}%`;
 
         const evalCats = data.evaluated_categories || [];
@@ -2150,9 +2177,9 @@
         }
 
         // TAB 1: AI Summary & Synthesis
-        const summaryText = data.ai_summary || "Synthèse en cours de génération...";
+        const summaryText = data.ai_summary || "Summary generating...";
         document.getElementById('m-ai-summary-text').innerHTML = formatMarkdown(summaryText);
-        document.getElementById('m-ai-source-badge').innerText = data.ai_source ? `Synthèse (${data.ai_source})` : "Festival Intelligence Brief";
+        document.getElementById('m-ai-source-badge').innerText = data.ai_source ? `AI Synthesis (${data.ai_source})` : "Festival Intelligence Brief";
 
         // Why matched points
         const whyList = document.getElementById('m-why-list');
@@ -2162,7 +2189,7 @@
         });
 
         // TAB 2: Categories & Per-Category Eligibility
-        document.getElementById('m-cats-total-count').innerText = `${evalCats.length} catégorie(s) analysée(s)`;
+        document.getElementById('m-cats-total-count').innerText = `${evalCats.length} category(ies) evaluated`;
         const catList = document.getElementById('m-categories-list');
         catList.innerHTML = '';
 
@@ -2172,7 +2199,7 @@
             const badgeClass = catEligible 
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300 font-extrabold'
               : 'bg-rose-50 text-rose-800 border-rose-300 font-bold';
-            const badgeText = catEligible ? '✓ Eligible & Recommended' : '⚠️ Ineligible pour votre film';
+            const badgeText = catEligible ? '✓ Eligible & Recommended' : '⚠️ Ineligible for your film';
 
             let feeBadges = '';
             for (let [k, v] of Object.entries(c.fees || {})) {
@@ -2180,8 +2207,8 @@
             }
 
             let constraintsInfo = '';
-            if (c.max_runtime_mins) constraintsInfo += ` • Durée max: ${c.max_runtime_mins} min`;
-            if (c.min_runtime_mins) constraintsInfo += ` • Durée min: ${c.min_runtime_mins} min`;
+            if (c.max_runtime_mins) constraintsInfo += ` • Max runtime: ${c.max_runtime_mins} min`;
+            if (c.min_runtime_mins) constraintsInfo += ` • Min runtime: ${c.min_runtime_mins} min`;
 
             catList.innerHTML += `
               <div class="p-4 rounded-2xl ${catEligible ? 'bg-slate-50 border-slate-200' : 'bg-rose-50/30 border-rose-200/60'} border space-y-2">
@@ -2193,21 +2220,21 @@
                 </div>
                 
                 <div class="text-xs text-slate-600 font-medium">
-                  <strong>Diagnostic :</strong> ${escapeHtml(c.reason || 'Conforme aux critères standards.')}
+                  <strong>Evaluation:</strong> ${escapeHtml(c.reason || 'Compliant with standard criteria.')}
                   ${constraintsInfo ? `<span class="text-slate-400 font-normal">${constraintsInfo}</span>` : ''}
                 </div>
 
                 ${c.description ? `<p class="text-xs text-slate-500 leading-relaxed">${escapeHtml(c.description)}</p>` : ''}
                 
                 <div class="pt-1 flex flex-wrap items-center">
-                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-2">Frais :</span>
-                  ${feeBadges || '<span class="text-xs text-slate-400 italic">Non spécifiés</span>'}
+                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-2">Fees:</span>
+                  ${feeBadges || '<span class="text-xs text-slate-400 italic">Not specified</span>'}
                 </div>
               </div>
             `;
           });
         } else {
-          catList.innerHTML = `<p class="text-xs text-slate-400 italic">Aucune catégorie répertoriée.</p>`;
+          catList.innerHTML = `<p class="text-xs text-slate-400 italic">No categories listed.</p>`;
         }
 
         // TAB 3: Requirements Comparison & Rules
@@ -2217,11 +2244,11 @@
 
         const reqCards = [
           { title: "Runtime & Format", val: reqs.runtime || "Short film compliant", icon: "clock" },
-          { title: "Statut de Première", val: reqs.premiere || "Aucune contrainte stricte", icon: "sparkles" },
-          { title: "Statut Étudiant", val: reqs.student || "Ouvert à tous profils", icon: "graduation-cap" },
-          { title: "Première Œuvre", val: reqs.first_time || "Ouvert aux réalisateurs confirmés et débutants", icon: "award" },
-          { title: "Politique IA", val: reqs.ai_policy || "Standard / Non restrictif", icon: "bot" },
-          { title: "Diffusion Web Antérieure", val: reqs.online_distribution || "Vérifier les conditions en ligne", icon: "globe" }
+          { title: "Premiere Status", val: reqs.premiere || "No strict constraints", icon: "sparkles" },
+          { title: "Student Status", val: reqs.student || "Open to all filmmakers", icon: "graduation-cap" },
+          { title: "Debut / First Film", val: reqs.first_time || "Open to first-time & established filmmakers", icon: "award" },
+          { title: "AI Policy", val: reqs.ai_policy || "Standard / Non-restrictive", icon: "bot" },
+          { title: "Online Availability", val: reqs.online_distribution || "Verify online premiere rules", icon: "globe" }
         ];
 
         reqCards.forEach(rc => {
@@ -2236,14 +2263,14 @@
           `;
         });
 
-        document.getElementById('m-rules-text').innerText = d.rules || d.description || 'Pas de règlement disponible.';
+        document.getElementById('m-rules-text').innerText = d.rules || d.description || 'No rules text available.';
 
         // TAB 4: Awards & Distinctions
         const awardsContainer = document.getElementById('m-awards-container');
         if (d.awards && d.awards.trim()) {
           awardsContainer.innerText = d.awards;
         } else {
-          awardsContainer.innerHTML = '<span class="text-slate-400 italic">Les prix, trophées et distinctions spécifiques ne sont pas détaillés publiquement.</span>';
+          awardsContainer.innerHTML = '<span class="text-slate-400 italic">Awards, trophies, and specific distinctions are not publicly detailed.</span>';
         }
 
         // TAB 5: Dates & Venue Timeline
@@ -2259,13 +2286,13 @@
             `;
           });
         } else {
-          datesList.innerHTML = `<p class="text-xs text-slate-400 italic">Aucune date limite répertoriée.</p>`;
+          datesList.innerHTML = `<p class="text-xs text-slate-400 italic">No deadlines listed.</p>`;
         }
 
         // Venue Box
         if (d.venue_name || d.venue_address) {
           document.getElementById('m-venue-box').classList.remove('hidden');
-          document.getElementById('m-venue-name').innerText = d.venue_name || 'Lieu non spécifié';
+          document.getElementById('m-venue-name').innerText = d.venue_name || 'Venue not specified';
           document.getElementById('m-venue-address').innerText = d.venue_address || '';
         } else {
           document.getElementById('m-venue-box').classList.add('hidden');
@@ -2286,7 +2313,7 @@
         lucide.createIcons();
       } catch (e) {
         console.error("Open modal err:", e);
-        showToast("Erreur lors de l'ouverture du dossier", true);
+        showToast("Error opening festival dossier", true);
       }
     }
 
@@ -2317,8 +2344,8 @@
       const summaryBox = document.getElementById('m-ai-summary-text');
 
       btn.disabled = true;
-      btn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i><span>Génération Ollama...</span>`;
-      summaryBox.innerHTML = `<div class="p-6 text-center text-slate-500 italic"><div class="inline-block w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mb-2"></div><br>Le modèle IA local analyse le règlement officiel et génère la synthèse structurée...</div>`;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i><span>Generating with Ollama...</span>`;
+      summaryBox.innerHTML = `<div class="p-6 text-center text-slate-500 italic"><div class="inline-block w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mb-2"></div><br>Local AI model is analyzing official rules and generating structured synthesis...</div>`;
       lucide.createIcons();
 
       try {
@@ -2329,16 +2356,16 @@
         });
         const data = await res.json();
         if (res.ok) {
-          summaryBox.innerHTML = formatMarkdown(data.ai_summary || "Synthèse non disponible");
-          document.getElementById('m-ai-source-badge').innerText = `Synthèse Analytique (${data.source || 'IA Locale'})`;
+          summaryBox.innerHTML = formatMarkdown(data.ai_summary || "Summary not available");
+          document.getElementById('m-ai-source-badge').innerText = `Analytical Synthesis (${data.source || 'Local AI'})`;
           showToast("AI intelligence summary generated successfully!");
         } else {
-          summaryBox.innerText = data.detail || "Erreur lors de la génération IA.";
-          showToast(data.detail || "Erreur IA", true);
+          summaryBox.innerText = data.detail || "Error during AI generation.";
+          showToast(data.detail || "AI Error", true);
         }
       } catch (e) {
-        summaryBox.innerText = "Erreur de connexion au modèle local.";
-        showToast("Erreur de connexion", true);
+        summaryBox.innerText = "Error connecting to local model.";
+        showToast("Connection error", true);
       } finally {
         btn.disabled = false;
         btn.innerHTML = `<i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i><span>Generate with Ollama</span>`;
@@ -2373,7 +2400,7 @@
         list = list.filter(f => (f.submission_status || 'To Submit') === filterStatus);
       }
 
-      if (countTag) countTag.innerText = `${list.length} festival(s) affiché(s) (${savedBookmarksCache.length} favoris au total)`;
+      if (countTag) countTag.innerText = `${list.length} festival(s) displayed (${savedBookmarksCache.length} in Watchlist)`;
 
       if (list.length === 0) {
         emptyBox?.classList.remove('hidden');
@@ -2399,7 +2426,7 @@
                   ${pct}% Match
                 </span>
                 
-                <button onclick="toggleBookmark('${f.slug}', event)" class="p-1 rounded-lg text-amber-500 hover:text-rose-500 transition" title="Retirer des favoris">
+                <button onclick="toggleBookmark('${f.slug}', event)" class="p-1 rounded-lg text-amber-500 hover:text-rose-500 transition" title="Remove from Watchlist">
                   <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
               </div>
@@ -2411,28 +2438,28 @@
                 </h3>
                 <div class="flex items-center space-x-1 text-xs text-slate-400 mt-0.5">
                   <i data-lucide="map-pin" class="w-3 h-3 flex-shrink-0"></i>
-                  <span class="truncate">${escapeHtml(f.location || 'Localisation non renseignée')}</span>
+                  <span class="truncate">${escapeHtml(f.location || 'Location not specified')}</span>
                 </div>
               </div>
 
               <!-- Status selector & Memo Note -->
               <div class="pt-2 border-t border-slate-100 space-y-2">
                 <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Statut Candidature</label>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Submission Status</label>
                   <select onchange="updateBookmarkStatus('${f.slug}', this.value)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none">
-                    <option value="To Submit" ${curStatus === 'To Submit' ? 'selected' : ''}>À soumettre</option>
-                    <option value="In Progress" ${curStatus === 'In Progress' ? 'selected' : ''}>Dossier en cours</option>
-                    <option value="Submitted" ${curStatus === 'Submitted' ? 'selected' : ''}>Soumis</option>
-                    <option value="Selected" ${curStatus === 'Selected' ? 'selected' : ''}>Sélectionné / Lauréat</option>
-                    <option value="Not Selected" ${curStatus === 'Not Selected' ? 'selected' : ''}>Non retenu</option>
+                    <option value="To Submit" ${curStatus === 'To Submit' ? 'selected' : ''}>To Submit</option>
+                    <option value="In Progress" ${curStatus === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                    <option value="Submitted" ${curStatus === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                    <option value="Selected" ${curStatus === 'Selected' ? 'selected' : ''}>Selected / Winner</option>
+                    <option value="Not Selected" ${curStatus === 'Not Selected' ? 'selected' : ''}>Not Selected</option>
                   </select>
                 </div>
 
                 <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Mémo & Suivi</label>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Personal Memo & Tracking</label>
                   <div class="flex items-center space-x-1">
-                    <input type="text" id="bnote-${f.slug}" value="${escapeHtml(curNote)}" placeholder="Ajouter une note..." class="flex-1 px-2.5 py-1 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none font-medium">
-                    <button onclick="updateBookmarkNote('${f.slug}')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition" title="Save Session la note">
+                    <input type="text" id="bnote-${f.slug}" value="${escapeHtml(curNote)}" placeholder="Add a memo..." class="flex-1 px-2.5 py-1 text-xs bg-slate-50 border border-slate-200 rounded-lg outline-none font-medium">
+                    <button onclick="updateBookmarkNote('${f.slug}')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition" title="Save note">
                       <i data-lucide="save" class="w-3.5 h-3.5"></i>
                     </button>
                   </div>
@@ -2441,8 +2468,8 @@
 
               <!-- Quick Info -->
               <div class="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
-                <span>Deadline : <strong>${f.next_deadline_date || 'Inconnue'}</strong></span>
-                <span>Frais : <strong>${f.min_fee_usd !== null ? '$' + f.min_fee_usd.toFixed(2) : 'Gratuit'}</strong></span>
+                <span>Deadline: <strong>${f.next_deadline_date || 'Unknown'}</strong></span>
+                <span>Fee: <strong>${f.min_fee_usd !== null ? '$' + f.min_fee_usd.toFixed(2) : 'Free'}</strong></span>
               </div>
             </div>
 
@@ -2453,7 +2480,7 @@
                 <i data-lucide="external-link" class="w-3 h-3"></i>
               </a>
               <button onclick="openModal('${f.slug}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-brand-50 hover:bg-brand-100 text-brand-700 transition">
-                Dossier complet
+                Full Dossier
               </button>
             </div>
 
@@ -2471,14 +2498,14 @@
           body: JSON.stringify({ submission_status: newStatus })
         });
         if (res.ok) {
-          showToast(`Statut mis à jour : « ${newStatus} »`);
+          showToast(`Status updated: "${newStatus}"`);
           const b = savedBookmarksCache.find(x => x.slug === slug);
           if (b) b.submission_status = newStatus;
           const fest = festivals.find(x => x.slug === slug);
           if (fest) fest.submission_status = newStatus;
         }
       } catch (e) {
-        showToast("Erreur de mise à jour", true);
+        showToast("Update error", true);
       }
     }
 
@@ -2492,23 +2519,23 @@
           body: JSON.stringify({ notes: val })
         });
         if (res.ok) {
-          showToast("Note enregistrée !");
+          showToast("Note saved!");
           const b = savedBookmarksCache.find(x => x.slug === slug);
           if (b) b.saved_notes = val;
           const fest = festivals.find(x => x.slug === slug);
           if (fest) fest.saved_notes = val;
         }
       } catch (e) {
-        showToast("Erreur d'enregistrement", true);
+        showToast("Save error", true);
       }
     }
 
     // Analyses History & Sessions Management
     function openSaveAnalysisModal() {
       const filmTitle = document.getElementById('p-film-title')?.value.trim() || "Short Film";
-      const dateStr = new Date().toLocaleDateString('fr-FR');
+      const dateStr = new Date().toLocaleDateString('en-US');
       const nameInput = document.getElementById('save-ana-name');
-      if (nameInput) nameInput.value = `Analyse ${filmTitle} (${dateStr})`;
+      if (nameInput) nameInput.value = `Analysis ${filmTitle} (${dateStr})`;
       document.getElementById('modal-save-analysis')?.classList.remove('hidden');
     }
 
@@ -2521,7 +2548,7 @@
       const note = document.getElementById('save-ana-note')?.value.trim() || '';
 
       if (!name) {
-        showToast("Veuillez saisir un nom pour cette analyse", true);
+        showToast("Please enter a name for this analysis session", true);
         return;
       }
 
@@ -2533,14 +2560,14 @@
         });
         if (res.ok) {
           closeSaveAnalysisModal();
-          showToast(`Analyse « ${name} » archivée avec succès !`);
+          showToast(`Analysis session "${name}" archived successfully!`);
           updateNavBadges();
           loadAnalysesView();
         } else {
-          showToast("Erreur lors de la sauvegarde", true);
+          showToast("Error saving analysis", true);
         }
       } catch (e) {
-        showToast("Erreur de connexion", true);
+        showToast("Connection error", true);
       }
     }
 
@@ -2581,7 +2608,7 @@
               <div class="flex items-start justify-between gap-2">
                 <div>
                   <h3 class="font-extrabold text-base text-slate-900 leading-snug">${escapeHtml(a.name)}</h3>
-                  <div class="text-[11px] text-slate-400 mt-0.5">Enregistré le ${a.created_at || 'Inconnu'}</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Saved on ${a.created_at || 'Unknown'}</div>
                 </div>
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-indigo-50 text-indigo-700 border border-indigo-200 whitespace-nowrap">
                   ${a.festivals_count} festivals
@@ -2589,7 +2616,7 @@
               </div>
 
               <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70 text-xs space-y-1">
-                <div class="font-bold text-slate-800">Film : « ${escapeHtml(a.film_title || 'Sans titre')} »</div>
+                <div class="font-bold text-slate-800">Project: "${escapeHtml(a.film_title || 'Untitled')}"</div>
                 ${a.note ? `<p class="text-slate-500 italic">${escapeHtml(a.note)}</p>` : ''}
               </div>
             </div>
@@ -2598,7 +2625,7 @@
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
               <button onclick="loadAnalysisSnapshot(${a.id})" class="flex-1 py-2 px-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-sm">
                 <i data-lucide="folder-open" class="w-3.5 h-3.5"></i>
-                <span>Ouvrir l'analyse</span>
+                <span>Open Session</span>
               </button>
 
               <button onclick="exportAnalysisSession(${a.id})" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Download JSON session file">
@@ -2618,9 +2645,9 @@
 
     async function loadAnalysisSnapshot(id) {
       try {
-        showToast("Restauration de l'analyse archivée...");
+        showToast("Restoring archived analysis session...");
         const res = await fetch(`/api/analyses/${id}`);
-        if (!res.ok) throw new Error("Analyse introuvable");
+        if (!res.ok) throw new Error("Analysis not found");
         const snap = await res.json();
 
         festivals = snap.results || [];
@@ -2629,9 +2656,9 @@
 
         const filmTitle = snap.film_title || snap.profile?.film_title || "Short Film";
         const hl = document.getElementById('results-headline');
-        if (hl) hl.innerText = `Matched Festivals for "${filmTitle}" (Archive Restaurée)`;
+        if (hl) hl.innerText = `Matched Festivals for "${filmTitle}" (Restored Archive)`;
         const cnt = document.getElementById('results-count-text');
-        if (cnt) cnt.innerText = `${festivals.length} festival(s) restauré(s) depuis « ${snap.name} » sans re-scraping.`;
+        if (cnt) cnt.innerText = `${festivals.length} festival(s) restored from "${snap.name}" without re-scraping.`;
 
         renderGrid(festivals);
         renderTable(festivals);
@@ -2648,10 +2675,10 @@
           fillProfileForm(snap.profile);
         }
 
-        showToast(`Analyse « ${snap.name} » ouverte avec succès !`);
+        showToast(`Analysis session "${snap.name}" restored successfully!`);
         lucide.createIcons();
       } catch (err) {
-        showToast("Erreur lors de la réouverture de l'analyse", true);
+        showToast("Error restoring analysis session", true);
       }
     }
 
@@ -2663,7 +2690,7 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      showToast("Fichier de session JSON téléchargé !");
+      showToast("Session JSON file downloaded!");
     }
 
     async function deleteAnalysisSnapshot(id) {
@@ -2671,14 +2698,14 @@
       try {
         const res = await fetch(`/api/analyses/${id}`, { method: 'DELETE' });
         if (res.ok) {
-          showToast("Archive supprimée");
+          showToast("Archive deleted");
           updateNavBadges();
           loadAnalysesView();
         } else {
-          showToast("Erreur de suppression", true);
+          showToast("Delete error", true);
         }
       } catch (e) {
-        showToast("Erreur réseau", true);
+        showToast("Network error", true);
       }
     }
 
@@ -2697,15 +2724,15 @@
           });
           const data = await res.json();
           if (res.ok) {
-            showToast(`Session importée avec succès : « ${data.name} » !`);
+            showToast(`Session imported successfully: "${data.name}"!`);
             updateNavBadges();
             loadAnalysesView();
             if (data.id) loadAnalysisSnapshot(data.id);
           } else {
-            showToast(data.detail || "Erreur lors de l'import de session", true);
+            showToast(data.detail || "Error importing session", true);
           }
         } catch (err) {
-          showToast("Fichier JSON invalide", true);
+          showToast("Invalid JSON file", true);
         }
       };
       reader.readAsText(file);
@@ -2861,11 +2888,11 @@
           const cpuElem = document.getElementById('sys-cpu-name');
           if (cpuElem) cpuElem.innerText = data.system_ram.cpu_info || 'Intel Core i3-1005G1';
           const ramBadge = document.getElementById('sys-ram-badge');
-          if (ramBadge) ramBadge.innerText = `${data.system_ram.available_gb} Go libre(s)`;
+          if (ramBadge) ramBadge.innerText = `${data.system_ram.available_gb} GB free`;
           const ramUsed = document.getElementById('sys-ram-used');
-          if (ramUsed) ramUsed.innerText = `Utilisé: ${data.system_ram.used_percent}%`;
+          if (ramUsed) ramUsed.innerText = `Used: ${data.system_ram.used_percent}%`;
           const ramTotal = document.getElementById('sys-ram-total');
-          if (ramTotal) ramTotal.innerText = `Total: ${data.system_ram.total_gb} Go`;
+          if (ramTotal) ramTotal.innerText = `Total: ${data.system_ram.total_gb} GB`;
           const ramBar = document.getElementById('sys-ram-bar');
           if (ramBar) ramBar.style.width = `${data.system_ram.used_percent}%`;
         }
@@ -2880,9 +2907,9 @@
 
         if (data.ollama_online) {
           if (ollamaPill) ollamaPill.classList.remove('hidden');
-          if (pillText) pillText.innerText = `IA Locale Active (${data.active_model})`;
+          if (pillText) pillText.innerText = `Local AI Active (${data.active_model})`;
           if (statusText) {
-            statusText.innerText = `En ligne (Port 11434)`;
+            statusText.innerText = `Online (Port 11434)`;
             statusText.className = "font-extrabold text-sm text-emerald-700";
           }
           if (statusVer) statusVer.innerText = `Ollama v${data.ollama_version || '0.1'}`;
@@ -2891,10 +2918,10 @@
         } else {
           if (ollamaPill) ollamaPill.classList.add('hidden');
           if (statusText) {
-            statusText.innerText = `Serveur Inactif / Déconnecté`;
+            statusText.innerText = `Server Inactive / Offline`;
             statusText.className = "font-extrabold text-sm text-rose-600";
           }
-          if (statusVer) statusVer.innerText = `Non accessible sur localhost:11434`;
+          if (statusVer) statusVer.innerText = `Not accessible on localhost:11434`;
           if (btnStart) btnStart.classList.remove('hidden');
           if (iconBox) iconBox.className = "w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center flex-shrink-0";
         }
@@ -2907,7 +2934,7 @@
           (data.models || []).forEach(m => {
             const opt = document.createElement('option');
             opt.value = m.name;
-            const statusLabel = m.is_installed ? '✓ Prêt' : '⚠️ Non téléchargé';
+            const statusLabel = m.is_installed ? '✓ Ready' : '⚠️ Not downloaded';
             opt.text = `${m.name} (${statusLabel} • ${m.accuracy_rate} • ${m.speed_core_i3})`;
             if (m.name === currentVal) opt.selected = true;
             select.appendChild(opt);
@@ -2945,11 +2972,11 @@
 
         let statusBadge = '';
         if (isActive) {
-          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-brand-50 text-brand-700 border border-brand-200 flex items-center space-x-1"><i data-lucide="check-circle" class="w-3 h-3 text-brand-600"></i><span>Actif par défaut</span></span>`;
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-brand-50 text-brand-700 border border-brand-200 flex items-center space-x-1"><i data-lucide="check-circle" class="w-3 h-3 text-brand-600"></i><span>Active Default</span></span>`;
         } else if (isInstalled) {
-          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">✓ Installé</span>`;
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">✓ Installed</span>`;
         } else {
-          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-500">Non installé</span>`;
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-500">Not installed</span>`;
         }
 
         let actionButtons = '';
@@ -2957,7 +2984,7 @@
           actionButtons = `
             <button onclick="pullModel('${m.name}')" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-sm">
               <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              <span>Télécharger (${m.disk_size})</span>
+              <span>Download (${m.disk_size})</span>
             </button>
           `;
         } else {
@@ -2966,10 +2993,10 @@
               ${!isActive ? `
                 <button onclick="selectDefaultModel('${m.name}')" class="flex-1 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 text-xs font-bold transition flex items-center justify-center space-x-1">
                   <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                  <span>Activer</span>
+                  <span>Activate</span>
                 </button>
               ` : `
-                <span class="flex-1 py-2 text-center text-xs font-bold text-slate-400 bg-slate-50 rounded-xl border border-slate-200">Par défaut</span>
+                <span class="flex-1 py-2 text-center text-xs font-bold text-slate-400 bg-slate-50 rounded-xl border border-slate-200">Default</span>
               `}
               <button onclick="deleteModel('${m.name}')" class="px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition flex items-center space-x-1" title="Delete from disk">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
@@ -3002,19 +3029,19 @@
               <!-- Metrics -->
               <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200/70 text-xs">
                 <div class="p-2 rounded-xl bg-white border border-slate-200/70">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400">Espace Disque</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400">Disk Size</span>
                   <span class="font-bold text-slate-800">${m.actual_disk_size || m.disk_size}</span>
                 </div>
                 <div class="p-2 rounded-xl bg-white border border-slate-200/70">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400">Conso. RAM</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400">RAM Usage</span>
                   <span class="font-bold text-slate-800">${m.ram_usage}</span>
                 </div>
                 <div class="p-2 rounded-xl bg-white border border-slate-200/70">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400">Taux Exactitude</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400">Accuracy Rate</span>
                   <span class="font-bold text-emerald-700">${m.accuracy_rate}</span>
                 </div>
                 <div class="p-2 rounded-xl bg-white border border-slate-200/70">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400">Vitesse Core i3</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400">Core i3 Speed</span>
                   <span class="font-bold text-brand-700">${m.speed_core_i3}</span>
                 </div>
               </div>
@@ -3038,14 +3065,14 @@
           body: JSON.stringify({ name: modelName })
         });
         if (res.ok) {
-          showToast(`Téléchargement de « ${modelName} » initié !`);
+          showToast(`Downloading "${modelName}" initiated!`);
           startPullPolling();
         } else {
           const err = await res.json();
-          showToast(err.detail || "Erreur lancement téléchargement", true);
+          showToast(err.detail || "Error starting download", true);
         }
       } catch (e) {
-        showToast("Erreur réseau", true);
+        showToast("Network error", true);
       }
     }
 
@@ -3063,7 +3090,7 @@
             const nameEl = document.getElementById('pull-model-name');
             if (nameEl) nameEl.innerText = data.model_name || '';
             const statusEl = document.getElementById('pull-model-status');
-            if (statusEl) statusEl.innerText = data.status || 'Téléchargement...';
+            if (statusEl) statusEl.innerText = data.status || 'Downloading...';
             const pctEl = document.getElementById('pull-model-pct');
             if (pctEl) pctEl.innerText = `${data.percent || 0}%`;
             const barEl = document.getElementById('pull-model-bar');
@@ -3074,9 +3101,9 @@
               if (data.total_bytes > 0) {
                 const compMb = Math.round(data.completed_bytes / (1024 * 1024));
                 const totMb = Math.round(data.total_bytes / (1024 * 1024));
-                bytesEl.innerText = `${compMb} Mo / ${totMb} Mo`;
+                bytesEl.innerText = `${compMb} MB / ${totMb} MB`;
               } else {
-                bytesEl.innerText = data.status || 'En cours...';
+                bytesEl.innerText = data.status || 'In progress...';
               }
             }
           } else {
@@ -3084,7 +3111,7 @@
             pullPollTimer = null;
             if (box) box.classList.add('hidden');
             if (data.error) {
-              showToast(`Erreur téléchargement: ${data.error}`, true);
+              showToast(`Download error: ${data.error}`, true);
             } else if (data.status) {
               showToast(data.status);
             }
@@ -3105,10 +3132,10 @@
           showToast(data.message);
           loadModelsData();
         } else {
-          showToast(data.message || "Erreur de suppression", true);
+          showToast(data.message || "Delete error", true);
         }
       } catch (e) {
-        showToast("Erreur lors de la suppression", true);
+        showToast("Error during deletion", true);
       }
     }
 
@@ -3121,11 +3148,11 @@
         });
         const data = await res.json();
         if (data.status === 'success') {
-          showToast(`Modèle « ${modelName} » activé par défaut !`);
+          showToast(`Model "${modelName}" set as default!`);
           loadModelsData();
         }
       } catch (e) {
-        showToast("Erreur lors de l'activation", true);
+        showToast("Error activating model", true);
       }
     }
 
