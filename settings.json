@@ -1,0 +1,4 @@
+{
+  "active_model": "qwen2.5:0.5b",
+  "auto_unload_ram": true
+}

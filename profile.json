@@ -1,0 +1,49 @@
+{
+  "director_age_group": "emerging",
+  "is_student": false,
+  "school_name": null,
+  "shot_during_studies": false,
+  "is_first_time": true,
+  "director_nationality": "France",
+  "director_residence": "Cambodia",
+  "demographics": [],
+  "credited_roles": "director_only",
+  "film_title": "Art in Motion: Dive into Skinny Fish",
+  "runtime_minutes": 8,
+  "project_type": "documentary",
+  "genres": [
+    "Short",
+    "Documentary"
+  ],
+  "categories": null,
+  "completion_date": "2026-10-15",
+  "production_budget": 500.0,
+  "budget_currency": "USD",
+  "budget_tier": "micro",
+  "country_of_origin": "Cambodia",
+  "country": null,
+  "country_of_filming": "Cambodia",
+  "spoken_language": "Khmer",
+  "subtitles": [
+    "English"
+  ],
+  "color_type": "color",
+  "aspect_ratio": "16:9",
+  "capture_format": "digital",
+  "ai_integration_level": "none",
+  "ai_target_category": "all",
+  "has_ai_disclosure": false,
+  "premiere_status_available": "world",
+  "online_availability": "private",
+  "past_screenings_awards": null,
+  "commercial_distribution": "none",
+  "max_fee_usd": 30.0,
+  "deadline_not_before": "2026-09-23",
+  "min_years_running": 0,
+  "min_reviews": 0,
+  "target_accreditations": [],
+  "target_event_types": [
+    "live_screening"
+  ],
+  "target_region": "all"
+}

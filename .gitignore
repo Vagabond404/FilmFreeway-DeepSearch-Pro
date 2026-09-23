@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller & Build artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# Temporary & Scratch testing files
+scratch/
+out.txt
+*.log
+tmp/
+temp/
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment & local settings
+.env
+.venv/
+venv/
+ENV/
+*.db-journal
+filmfreeway_app.log
