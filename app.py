@@ -513,6 +513,16 @@ def api_health():
     return {"status": "ok", "app": "FilmFreeway DeepSearch Pro"}
 
 
+# Clean Shutdown Endpoint
+@app.post("/api/shutdown")
+def api_shutdown(background_tasks: BackgroundTasks):
+    def kill_proc():
+        time.sleep(0.8)
+        os._exit(0)
+    background_tasks.add_task(kill_proc)
+    return {"status": "shutting_down", "message": "Server stopping cleanly."}
+
+
 # API Endpoints
 @app.get("/api/stats")
 
